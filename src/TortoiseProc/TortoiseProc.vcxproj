@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Boost.Libs.1.84.1\build\native\Boost.Libs.props" Condition="Exists('..\packages\Boost.Libs.1.84.1\build\native\Boost.Libs.props')" />
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|ARM64">
       <Configuration>Debug</Configuration>
@@ -148,6 +149,8 @@
     <ClCompile Include="CommitIsOnRefsDlg.cpp" />
     <ClCompile Include="CreateChangelistDlg.cpp" />
     <ClCompile Include="DiffLinesForStaging.cpp" />
+    <ClCompile Include="Commands\DstAddWorktreeCommand.cpp" />
+    <ClCompile Include="DstAddWorktreeDlg.cpp" />
     <ClCompile Include="FilterHelper.cpp" />
     <ClCompile Include="FindBar.cpp" />
     <ClCompile Include="FirstStartWizard.cpp" />
@@ -460,6 +463,8 @@
     <ClInclude Include="CommitIsOnRefsDlg.h" />
     <ClInclude Include="ConfigureGitExe.h" />
     <ClInclude Include="CreateChangelistDlg.h" />
+    <ClInclude Include="Commands\DstAddWorktreeCommand.h" />
+    <ClInclude Include="DstAddWorktreeDlg.h" />
     <ClInclude Include="EnableStagingTypes.h" />
     <ClInclude Include="DiffLinesForStaging.h" />
     <ClInclude Include="FilterHelper.h" />
@@ -785,6 +790,7 @@
     <None Include="..\Resources\pandown.cur" />
     <None Include="..\Resources\TortoiseGit_Logo.svgz" />
     <None Include="..\Resources\TortoiseLoglistCommon.rc2" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\Resources\TortoiseProcENG.rc" />
@@ -824,6 +830,11 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets">
-  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Boost.Libs.1.84.1\build\native\Boost.Libs.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Boost.Libs.1.84.1\build\native\Boost.Libs.props'))" />
+  </Target>
 </Project>

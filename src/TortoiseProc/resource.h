@@ -1,6 +1,6 @@
-//{{NO_DEPENDENCIES}}
+﻿//{{NO_DEPENDENCIES}}
 // Microsoft Visual C++ generated include file.
-// Used by d:\TortoiseGit\src\Resources\TortoiseProcENG.rc
+// Used by D:\projects\DST_Git\src\Resources\TortoiseProcENG.rc
 //
 #define IDR_MAINFRAME                   1
 #define IDD_SETTINGSPROXY               102
@@ -154,6 +154,7 @@
 #define IDI_INDETERMINATE               368
 #define IDI_CHERRYPICK                  369
 #define IDR_TGITLOGO                    370
+#define IDD_DST_ADDWORKTREE             371
 #define IDS_CHSTAT_FILECOL              1000
 #define IDS_CHSTAT_WCCOL                1001
 #define IDS_CHSTAT_REPOCOL              1002
@@ -822,6 +823,7 @@
 #define IDC_BUTTON_STASH                1384
 #define IDC_EDITSYSTEMGITCONFIG         1384
 #define IDS_SETTINGS_SYMBOLIZEREFNAMES_TT 1384
+#define IDC_BTN_BRANCHNAME_BROWSE       1384
 #define IDC_FROMGROUP                   1385
 #define IDC_BUTTON_REMOVE               1385
 #define IDC_CONFIG                      1385
@@ -1676,6 +1678,9 @@
 #define IDC_WINDOWSCREDMGR              1859
 #define IDS_LOG_FILTER_REGEX_TT         1860
 #define IDC_REGISTER                    1861
+#define IDC_EDIT_WORKTREEPATH           1862
+#define IDC_EDIT_BRANCHNAME             1863
+#define IDC_BTN_WORKTREEPATH_BROWSE     1864
 #define IDS_LOG_REVERTTOREV_CONFIRM     1890
 #define IDS_LOG_REVERTREV_ERROR         1891
 #define IDS_LOG_STOPONCOPY_HINT         1892
@@ -2142,9 +2147,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        371
+#define _APS_NEXT_RESOURCE_VALUE        374
 #define _APS_NEXT_COMMAND_VALUE         32881
-#define _APS_NEXT_CONTROL_VALUE         1860
+#define _APS_NEXT_CONTROL_VALUE         1865
 #define _APS_NEXT_SYMED_VALUE           201
 #endif
 #endif

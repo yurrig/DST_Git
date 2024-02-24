@@ -180,6 +180,9 @@
     <Filter Include="Commands\LFS">
       <UniqueIdentifier>{fce39608-03c2-4646-9710-d244308dd3cd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Commands\DstAddWorktree">
+      <UniqueIdentifier>{e3bbbedd-ec15-4b06-95aa-d3b3981b0f83}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AddRemoteDlg.cpp">
@@ -1039,6 +1042,12 @@
     </ClCompile>
     <ClCompile Include="WorktreeListDlg.cpp">
       <Filter>Commands\worktree</Filter>
+    </ClCompile>
+    <ClCompile Include="Commands\DstAddWorktreeCommand.cpp">
+      <Filter>Commands\DstAddWorktree</Filter>
+    </ClCompile>
+    <ClCompile Include="DstAddWorktreeDlg.cpp">
+      <Filter>Utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1972,6 +1981,12 @@
     <ClInclude Include="..\Utils\URLFinder.h">
       <Filter>Utils\General</Filter>
     </ClInclude>
+    <ClInclude Include="Commands\DstAddWorktreeCommand.h">
+      <Filter>Commands\DstAddWorktree</Filter>
+    </ClInclude>
+    <ClInclude Include="DstAddWorktreeDlg.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Resources\actionadded.ico">
@@ -2330,6 +2345,7 @@
     <None Include="..\Resources\TortoiseGit_Logo.svgz">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\Resources\TortoiseProcENG.rc">

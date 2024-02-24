@@ -20,6 +20,9 @@
 #include "stdafx.h"
 #include "Command.h"
 #include "MessageBox.h"
+
+#include "DstAddWorktreeCommand.h"
+
 #include "AboutCommand.h"
 #include "AutoTextTestCommand.h"
 #include "CommitCommand.h"
@@ -162,6 +165,8 @@ enum TGitCommand
 	cmdWorktreeCreate,
 	cmdWorktreeList,
 	cmdDropWorktreeCreate,
+
+	cmdDstAddWorktree,
 };
 
 static const struct CommandInfo
@@ -241,6 +246,7 @@ static const struct CommandInfo
 	{	cmdWorktreeCreate,	L"newworktree"		},
 	{	cmdWorktreeList,	L"worktreelist"		},
 	{	cmdDropWorktreeCreate,	L"dropnewworktree"	},
+	{	cmdDstAddWorktree,	L"dstaddworktree"	},
 };
 
 
@@ -263,6 +269,8 @@ Command * CommandServer::GetCommand(const CString& sCmd)
 	// CBrowseRefsDlg dialog
 	switch (command)
 	{
+	case cmdDstAddWorktree:
+		return new DstAddWorktreeCommand;
 	case cmdAbout:
 		return new AboutCommand;
 	case cmdAutoTextTest:

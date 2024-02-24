@@ -26,6 +26,7 @@ LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
 
 IDR_DOWNLOAD            AVI                     "download.avi"
 
+
 /////////////////////////////////////////////////////////////////////////////
 //
 // Icon
@@ -34,74 +35,143 @@ IDR_DOWNLOAD            AVI                     "download.avi"
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
 IDR_MAINFRAME           ICON                    "Tortoise.ico"
+
 IDI_DRIVES              ICON                    "Drives.ico"
+
 IDI_PROXY               ICON                    "proxy.ico"
+
 IDI_MISC                ICON                    "misc.ico"
+
 IDI_SET_OVERLAYS        ICON                    "Overlays.ico"
+
 IDI_GENERAL             ICON                    "general.ico"
+
 IDI_LOOKANDFEEL         ICON                    "lookandfeel.ico"
+
 IDI_ICONSET             ICON                    "iconset.ico"
+
 IDI_DIALOGS             ICON                    "dialogs.ico"
+
 IDI_ACTIONADDED         ICON                    "actionadded.ico"
+
 IDI_ACTIONDELETED       ICON                    "actiondeleted.ico"
+
 IDI_ACTIONMODIFIED      ICON                    "actionmodified.ico"
+
 IDI_ACTIONREPLACED      ICON                    "actionreplaced.ico"
+
 IDI_ACTIONCONFLICTED    ICON                    "actionconflicted.ico"
+
 IDI_SAVEDDATA           ICON                    "saveddata.ico"
+
 IDI_GRAPHBAR            ICON                    "graph-bar.ico"
+
 IDI_GRAPHBARSTACKED     ICON                    "graph-bar-stacked.ico"
+
 IDI_GRAPHLINE           ICON                    "graph-line.ico"
+
 IDI_GRAPHLINESTACKED    ICON                    "graph-line-stacked.ico"
+
 IDI_GRAPHPIE            ICON                    "graph-pie.ico"
+
 IDI_SWITCHLEFTRIGHT     ICON                    "switch.ico"
+
 IDI_HOOK                ICON                    "hook.ico"
+
 IDI_REPOBROWSER_BKG     ICON                    "RepoBrowserBackground.ico"
+
 IDI_ADD_BKG             ICON                    "AddBackground.ico"
+
 IDI_RESOLVE_BKG         ICON                    "ResolveBackground.ico"
+
 IDI_REVERT_BKG          ICON                    "RevertBackground.ico"
+
 IDI_COMMIT_BKG          ICON                    "CommitBackground.ico"
+
 IDI_CFM_BKG             ICON                    "CFMBackground.ico"
+
 IDI_CANCELNORMAL        ICON                    "cancel-normal.ico"
+
 IDI_CANCELPRESSED       ICON                    "cancel-pressed.ico"
+
 IDI_LOGFILTER           ICON                    "logfilter.ico"
+
 IDI_FILTEREDIT          ICON                    "filteredit.ico"
+
 IDI_IMPORTPATHCES_BKG   ICON                    "ImportPatchesBackground.ico"
+
 IDI_SWITCH_BKG          ICON                    "SwitchBackground.ico"
+
 IDI_TORTOISEBLAME       ICON                    "TortoiseGitBlame.ico"
+
 IDI_BUGTRAQ             ICON                    "bugtraq.ico"
+
 IDI_REFRESH             ICON                    "refresh.ico"
+
 IDI_SAVE                ICON                    "save.ico"
+
 IDI_SAVEAS              ICON                    "saveas.ico"
+
 IDI_EXPLORER            ICON                    "explorer.ico"
+
 IDI_OPEN                ICON                    "open.ico"
+
 IDI_GITCONFIG           ICON                    "gitconfig.ico"
+
 IDI_GITREMOTE           ICON                    "gitremote.ico"
+
 IDI_ACTIONFETCHING      ICON                    "actionfetching.ico"
+
 IDI_LIBRARY             ICON                    "Library.ico"
+
 IDI_RESTORE             ICON                    "restore.ico"
+
 IDI_RESTOREOVL          ICON                    "restoreovl.ico"
+
 IDI_JUMPUP              ICON                    "jumpup.ico"
+
 IDI_JUMPDOWN            ICON                    "jumpdown.ico"
+
 IDI_UPDATE_BKG          ICON                    "UpdateBackground.ico"
+
 IDI_GITCREDENTIAL       ICON                    "gitcredential.ico"
+
 IDI_EXTERNALOVL         ICON                    "externalovl.ico"
+
 IDI_MERGEACTIVE         ICON                    "menumerge.ico"
+
 IDI_EXECUTABLEOVL       ICON                    "executableovl.ico"
+
 IDI_SYMLINKOVL          ICON                    "symlinkovl.ico"
+
 IDI_SPELL               ICON                    "spell.ico"
+
 IDI_FILE                ICON                    "file.ico"
+
 IDI_CODE                ICON                    "code.ico"
+
 IDI_SNIPPET             ICON                    "snippet.ico"
+
 IDI_CERTCHECK           ICON                    "certcheck.ico"
+
 IDI_TORTOISEUDIFF       ICON                    "..\\TortoiseUDiff\\TortoiseUDiff.ico"
+
 IDI_LIBRARY_WIN10       ICON                    "library-win10.ico"
+
 IDI_RESET               ICON                    "reset.ico"
+
 IDI_NOTEPAD             ICON                    "notepad.ico"
+
 IDI_GITFOLDER           ICON                    "gitfolder.ico"
+
 IDI_LOCK_BKG            ICON                    "LockBackground.ico"
+
 IDI_UNLOCK_BKG          ICON                    "UnlockBackground.ico"
+
 IDI_INDETERMINATE       ICON                    "indeterminate.ico"
+
 IDI_CHERRYPICK          ICON                    "cherry-pick.ico"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -109,8 +179,11 @@ IDI_CHERRYPICK          ICON                    "cherry-pick.ico"
 //
 
 IDB_LOGOFLIPPED         BITMAP                  "tortoisegit_logoflipped.bmp"
+
 IDR_REVGRAPHBAR         BITMAP                  "revgraphbar.bmp"
+
 IDR_REVGRAPHGLYPHS      BITMAP                  "revgraphglyphs.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -118,7 +191,9 @@ IDR_REVGRAPHGLYPHS      BITMAP                  "revgraphglyphs.bmp"
 //
 
 IDC_PANCUR              CURSOR                  "pan.cur"
+
 IDC_PANCURDOWN          CURSOR                  "pandown.cur"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -126,12 +201,13 @@ IDC_PANCURDOWN          CURSOR                  "pandown.cur"
 //
 
 IDR_TGITLOGO            RCDATA                  "TortoiseGit_Logo.svgz"
+
 #endif    // Neutral resources
 /////////////////////////////////////////////////////////////////////////////
 
 
 /////////////////////////////////////////////////////////////////////////////
-// English (U.S.) resources
+// English (United States) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
@@ -143,6 +219,7 @@ LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 //
 
 IDB_BITMAP_REFTYPE      BITMAP                  "reftype.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -214,11 +291,11 @@ BEGIN
     CONTROL         "",IDC_DATETO,"SysDateTimePick32",DTS_RIGHTALIGN | WS_TABSTOP,207,5,55,15
     EDITTEXT        IDC_SEARCHEDIT,264,5,45,15,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN
     COMBOBOX        IDC_LOG_JUMPTYPE,312,6,70,64,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
-    PUSHBUTTON      "",IDC_LOG_JUMPUP,385,5,14,14,WS_TABSTOP | BS_ICON
-    PUSHBUTTON      "",IDC_LOG_JUMPDOWN,400,5,14,14,WS_TABSTOP | BS_ICON
+    PUSHBUTTON      "",IDC_LOG_JUMPUP,385,5,14,14,BS_ICON
+    PUSHBUTTON      "",IDC_LOG_JUMPDOWN,400,5,14,14,BS_ICON
     CONTROL         "",IDC_LOGLIST,"SysListView32",LVS_REPORT | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | LVS_OWNERDATA | WS_BORDER | WS_TABSTOP,7,24,407,57
     CONTROL         "",IDC_SPLITTERTOP,"Static",SS_BLACKFRAME,7,81,407,5
-    CONTROL         "",IDC_MSGVIEW,"RichEdit50W",ES_MULTILINE | ES_READONLY | ES_WANTRETURN | WS_BORDER | WS_VSCROLL | WS_TABSTOP,7,86,407,56
+    CONTROL         "",IDC_MSGVIEW,"RichEdit50W",WS_BORDER | WS_VSCROLL | WS_TABSTOP | 0x1804,7,86,407,56
     CONTROL         "",IDC_PIC_AUTHOR,"Static",SS_BLACKFRAME,361,86,53,49
     CONTROL         "",IDC_SPLITTERBOTTOM,"Static",SS_BLACKFRAME,7,142,407,4
     CONTROL         "",IDC_LOGMSG,"SysListView32",LVS_REPORT | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,147,407,57
@@ -229,8 +306,8 @@ BEGIN
     PUSHBUTTON      "Help",IDHELP,364,225,50,14
     PUSHBUTTON      "Refresh",IDC_REFRESH,7,244,76,14
     PUSHBUTTON      "S&tatistics",IDC_STATBUTTON,86,244,64,14,WS_DISABLED
-    PUSHBUTTON      "Walk Be&havior",IDC_WALKBEHAVIOUR,153,244,80,14,BS_CHECKBOX
-    PUSHBUTTON      "&View",IDC_VIEW,236,244,50,14,BS_CHECKBOX
+    CHECKBOX        "Walk Be&havior",IDC_WALKBEHAVIOUR,153,244,80,14
+    CHECKBOX        "&View",IDC_VIEW,236,244,50,14
     DEFPUSHBUTTON   "OK",IDOK,305,244,52,14
     PUSHBUTTON      "Cancel",IDCANCEL,364,244,50,14
     CONTROL         "",IDC_PROGRESS,"msctls_progress32",NOT WS_VISIBLE | WS_BORDER,87,246,212,10
@@ -1497,7 +1574,7 @@ FONT 9, "Segoe UI", 400, 0, 0x1
 BEGIN
     LTEXT           "&Branch:",IDC_REBASE_STATIC_BRANCH,10,9,34,8
     CONTROL         "",IDC_REBASE_COMBOXEX_BRANCH,"ComboBoxEx32",CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP,48,7,111,140
-    PUSHBUTTON      "",IDC_BUTTON_REVERSE,163,7,19,15,WS_TABSTOP | BS_ICON
+    PUSHBUTTON      "",IDC_BUTTON_REVERSE,163,7,19,15,BS_ICON
     LTEXT           "&Upstream:",IDC_REBASE_STATIC_UPSTREAM,186,9,41,8
     CONTROL         "",IDC_REBASE_COMBOXEX_UPSTREAM,"ComboBoxEx32",CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP,230,7,116,140
     PUSHBUTTON      "...",IDC_BUTTON_BROWSE,352,7,19,15
@@ -2335,6 +2412,21 @@ BEGIN
     PUSHBUTTON      "Help",IDHELP,293,113,50,14
 END
 
+IDD_DST_ADDWORKTREE DIALOGEX 0, 0, 309, 176
+STYLE DS_SETFONT | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "Add worktree"
+FONT 9, "Segoe UI", 400, 0, 0x0
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,198,155,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,252,155,50,14
+    LTEXT           "Branch name:",IDC_STATIC,15,17,45,8
+    LTEXT           "Worktree path:",IDC_STATIC,15,67,50,8
+    PUSHBUTTON      "Bro&wse...",IDC_BTN_BRANCHNAME_BROWSE,224,14,78,17
+    PUSHBUTTON      "Bro&wse...",IDC_BTN_WORKTREEPATH_BROWSE,224,65,78,17
+    CONTROL         "Custom2",IDC_EDIT_WORKTREEPATH,"Scintilla",WS_TABSTOP,79,65,137,46,WS_EX_STATICEDGE
+    CONTROL         "Custom1",IDC_EDIT_BRANCHNAME,"Scintilla",WS_TABSTOP,79,14,137,46,WS_EX_STATICEDGE
+END
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -2405,6 +2497,10 @@ BEGIN
         RIGHTMARGIN, 228
         TOPMARGIN, 7
         BOTTOMMARGIN, 62
+    END
+
+    IDD_REPOSITORY_BROWSER, DIALOG
+    BEGIN
     END
 
     IDD_SETTINGSMAIN, DIALOG
@@ -3164,6 +3260,10 @@ BEGIN
         BOTTOMMARGIN, 114
     END
 
+    IDD_REVISIONGRAPH, DIALOG
+    BEGIN
+    END
+
     IDD_USER_PASSWD, DIALOG
     BEGIN
         LEFTMARGIN, 7
@@ -3353,6 +3453,14 @@ BEGIN
         TOPMARGIN, 7
         BOTTOMMARGIN, 127
     END
+
+    IDD_DST_ADDWORKTREE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 302
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 169
+    END
 END
 #endif    // APSTUDIO_INVOKED
 
@@ -3488,6 +3596,17 @@ BEGIN
     VK_F3,          IDM_FINDPREV,           VIRTKEY, SHIFT, NOINVERT
     "F",            IDM_SHOWFINDBAR,        VIRTKEY, CONTROL, NOINVERT
     VK_ESCAPE,      IDM_FINDEXIT,           VIRTKEY, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_DST_ADDWORKTREE AFX_DIALOG_LAYOUT
+BEGIN
+    0
 END
 
 
@@ -5225,7 +5344,7 @@ BEGIN
     IDS_VIEWPATCH           "View Patch"
 END
 
-#endif    // English (U.S.) resources
+#endif    // English (United States) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
