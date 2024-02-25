@@ -371,7 +371,7 @@ protected:
 		m_nResizeBlock = block;
 	}
 
-	void EnableSaveRestore(LPCWSTR pszSection, bool bRectOnly = FALSE)
+	virtual void EnableSaveRestore(LPCWSTR pszSection, bool bRectOnly = FALSE)
 	{
 		// call the base method with the bHorzResize and bVertResize parameters
 		// figured out from the resize block flags.

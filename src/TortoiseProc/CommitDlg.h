@@ -60,7 +60,7 @@ class CCommitDlg : public CResizableStandAloneDialog, public CSciEditContextMenu
 	DECLARE_DYNAMIC(CCommitDlg)
 
 public:
-	CCommitDlg(CWnd* pParent = nullptr); // standard constructor
+	CCommitDlg(CWnd* pParent = nullptr, UINT nID = IDD); // standard constructor
 	virtual ~CCommitDlg();
 
 protected:
@@ -172,7 +172,7 @@ protected:
 	void UpdateCheckLinks();
 	void ParseRegexFile(const CString& sFile, std::map<CString, CString>& mapRegex);
 	void ParseSnippetFile(const CString& sFile, std::map<CString, CString>& mapSnippet);
-	bool RunStartCommitHook();
+	virtual bool RunStartCommitHook();
 	void CreatePatchViewDlg();
 	void DestroyPatchViewDlgIfOpen();
 	void PrepareStagingSupport();
@@ -212,7 +212,7 @@ protected:
 
 	int					CheckHeadDetach();
 
-private:
+protected:
 	CWinThread*			m_pThread = nullptr;
 	std::map<CString, CString>	m_snippet;
 	CGitStatusListCtrl	m_ListCtrl;
@@ -252,7 +252,7 @@ private:
 	CString				m_sLogTemplate;
 	CMenuButton			m_ctrlOkButton;
 	CRegDWORD			m_regLastAction;
-	void				PrepareOkButton();
+	virtual void		PrepareOkButton();
 	struct ACCELLERATOR
 	{
 		int id;

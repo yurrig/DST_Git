@@ -1,4 +1,5 @@
 *.aps
+*.args.json
 *.cd
 *.chm
 *.diff
@@ -28,6 +29,7 @@
 /src/GitWCRev/Test.txt
 /src/GitWCRev/TestW.txt
 /src/ipch
+/src/packages
 /src/TortoiseShell/register.reg
 /src/TortoiseShell/register_recover.reg
 /Tools

@@ -22,6 +22,7 @@
 #include "MessageBox.h"
 
 #include "DstAddWorktreeCommand.h"
+#include "DstDropWorktreeCommand.h"
 
 #include "AboutCommand.h"
 #include "AutoTextTestCommand.h"
@@ -167,6 +168,7 @@ enum TGitCommand
 	cmdDropWorktreeCreate,
 
 	cmdDstAddWorktree,
+	cmdDstDropWorktree,
 };
 
 static const struct CommandInfo
@@ -247,6 +249,7 @@ static const struct CommandInfo
 	{	cmdWorktreeList,	L"worktreelist"		},
 	{	cmdDropWorktreeCreate,	L"dropnewworktree"	},
 	{	cmdDstAddWorktree,	L"dstaddworktree"	},
+	{	cmdDstDropWorktree,	L"dstdropworktree"	},
 };
 
 
@@ -271,6 +274,8 @@ Command * CommandServer::GetCommand(const CString& sCmd)
 	{
 	case cmdDstAddWorktree:
 		return new DstAddWorktreeCommand;
+	case cmdDstDropWorktree:
+		return new DstDropWorktreeCommand;
 	case cmdAbout:
 		return new AboutCommand;
 	case cmdAutoTextTest:

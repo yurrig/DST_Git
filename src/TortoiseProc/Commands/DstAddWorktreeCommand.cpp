@@ -16,8 +16,6 @@
 #include <filesystem>
 namespace fs = std::filesystem;
 
-//#include <boost/algorithm/string.hpp>
-
 namespace dst
 {
 char TargetName[] = "AzureDevOpsPAT";
@@ -281,7 +279,7 @@ bool DstAddWorktreeCommand::Execute()
 	auto current_path = fs::current_path();
 
 	fs::path path = parser.GetVal(L"path");
-	fs::current_path() = path;
+	fs::current_path(path);
 
 	fs::path main_worktree_dir_name = path.filename();
 

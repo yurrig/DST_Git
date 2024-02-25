@@ -183,6 +183,9 @@
     <Filter Include="Commands\DstAddWorktree">
       <UniqueIdentifier>{e3bbbedd-ec15-4b06-95aa-d3b3981b0f83}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Commands\DstDropWorktree">
+      <UniqueIdentifier>{acd906ac-3b64-4e7b-a65b-892dbdc33d36}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AddRemoteDlg.cpp">
@@ -1045,6 +1048,9 @@
     </ClCompile>
     <ClCompile Include="Commands\DstAddWorktreeCommand.cpp">
       <Filter>Commands\DstAddWorktree</Filter>
+    </ClCompile>
+    <ClCompile Include="Commands\DstDropWorktreeCommand.cpp">
+      <Filter>Commands\DstDropWorktree</Filter>
     </ClCompile>
     <ClCompile Include="DstAddWorktreeDlg.cpp">
       <Filter>Utils</Filter>
@@ -1983,6 +1989,9 @@
     </ClInclude>
     <ClInclude Include="Commands\DstAddWorktreeCommand.h">
       <Filter>Commands\DstAddWorktree</Filter>
+    </ClInclude>
+    <ClInclude Include="Commands\DstDropWorktreeCommand.h">
+      <Filter>Commands\DstDropWorktree</Filter>
     </ClInclude>
     <ClInclude Include="DstAddWorktreeDlg.h">
       <Filter>Utils</Filter>

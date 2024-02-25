@@ -53,8 +53,8 @@ UINT CCommitDlg::WM_UPDATEDATAFALSE = RegisterWindowMessage(L"TORTOISEGIT_COMMIT
 UINT CCommitDlg::WM_PARTIALSTAGINGREFRESHPATCHVIEW = RegisterWindowMessage(L"TORTOISEGIT_COMMIT_PARTIALSTAGINGREFRESHPATCHVIEW"); // same string in PatchViewDlg.cpp!!!
 
 IMPLEMENT_DYNAMIC(CCommitDlg, CResizableStandAloneDialog)
-CCommitDlg::CCommitDlg(CWnd* pParent /*=nullptr*/)
-	: CResizableStandAloneDialog(CCommitDlg::IDD, pParent)
+CCommitDlg::CCommitDlg(CWnd* pParent /*=nullptr*/, UINT nID /*=IDD*/)
+	: CResizableStandAloneDialog(nID, pParent)
 	, m_bShowUnversioned(FALSE)
 	, m_bWholeProject(FALSE)
 	, m_bWholeProject2(FALSE)

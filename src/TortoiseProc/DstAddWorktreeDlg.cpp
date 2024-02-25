@@ -56,6 +56,10 @@ BOOL DstAddWorktreeDlg::OnInitDialog()
 
 	m_edtBranchName.Init(-1);
 	m_edtBranchName.SetFont(L"Segoe UI", 9);
+
+	m_edtWorktreePath.Init(-1);
+	m_edtWorktreePath.SetFont(L"Segoe UI", 9);
+
 	if (!m_strBranchName.IsEmpty())
 	{
 		m_edtBranchName.SetText(m_strBranchName);
@@ -63,8 +67,6 @@ BOOL DstAddWorktreeDlg::OnInitDialog()
 	}
 	AddAnchor(IDC_EDIT_BRANCHNAME, TOP_LEFT, TOP_RIGHT);
 
-	m_edtWorktreePath.Init(-1);
-	m_edtWorktreePath.SetFont(L"Segoe UI", 9);
 	if (!m_strWorktreePath.IsEmpty())
 	{
 		m_edtWorktreePath.SetText(m_strWorktreePath);
