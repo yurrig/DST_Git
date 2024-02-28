@@ -6,6 +6,7 @@
 
 #include "AppUtils.h"
 #include "UnicodeUtils.h"
+#include "GitStatusListCtrl.h"
 
 #include "DSTWorktreeDlg.h"
 
@@ -118,6 +119,11 @@ BOOL DstDropWorktreeDlg::OnInitDialog()
 	ScreenToClient(&rcWorktreePath);
 
 	CCommitDlg::OnInitDialog();
+
+	m_ListCtrl.SetContextMenuBit(GITSLC_POPSKIPWORKTREE, false);
+	m_ListCtrl.SetContextMenuBit(GITSLC_POPASSUMEVALID, false);
+	m_ListCtrl.SetContextMenuBit(GITSLC_POPRESTORE, false);
+	m_ListCtrl.SetContextMenuBit(GITSLC_POPCHANGELISTS, false);
 
 	pedtWorktreePath->MoveWindow(rcWorktreePath);
 	pedtWorktreePath->SetWindowText(g_Git.m_CurrentDir);

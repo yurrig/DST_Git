@@ -1010,6 +1010,14 @@ int CGitStatusListCtrl::GetColumnIndex(int mask)
 	return -1;
 }
 
+void CGitStatusListCtrl::SetContextMenuBit(unsigned __int64 mask, bool set)
+{
+	if (set)
+		m_dwContextMenus |= mask;
+	else
+		m_dwContextMenus &= ~mask;
+}
+
 CString CGitStatusListCtrl::GetCellText(int listIndex, int column)
 {
 	static CString from(MAKEINTRESOURCE(IDS_STATUSLIST_FROM));
