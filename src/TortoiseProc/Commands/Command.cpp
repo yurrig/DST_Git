@@ -21,8 +21,7 @@
 #include "Command.h"
 #include "MessageBox.h"
 
-#include "DstAddWorktreeCommand.h"
-#include "DstDropWorktreeCommand.h"
+#include "DstWorktreeCommand.h"
 
 #include "AboutCommand.h"
 #include "AutoTextTestCommand.h"
@@ -167,8 +166,8 @@ enum TGitCommand
 	cmdWorktreeList,
 	cmdDropWorktreeCreate,
 
-	cmdDstAddWorktree,
-	cmdDstDropWorktree,
+	cmdDstWorktreeAdd,
+	cmdDstWorktreeRemove,
 };
 
 static const struct CommandInfo
@@ -248,8 +247,8 @@ static const struct CommandInfo
 	{	cmdWorktreeCreate,	L"newworktree"		},
 	{	cmdWorktreeList,	L"worktreelist"		},
 	{	cmdDropWorktreeCreate,	L"dropnewworktree"	},
-	{	cmdDstAddWorktree,	L"dstaddworktree"	},
-	{	cmdDstDropWorktree,	L"dstdropworktree"	},
+	{	cmdDstWorktreeAdd,	L"dstworktreeadd"	},
+	{	cmdDstWorktreeRemove,	L"dstworktreeremove"	},
 };
 
 
@@ -272,10 +271,10 @@ Command * CommandServer::GetCommand(const CString& sCmd)
 	// CBrowseRefsDlg dialog
 	switch (command)
 	{
-	case cmdDstAddWorktree:
-		return new DstAddWorktreeCommand;
-	case cmdDstDropWorktree:
-		return new DstDropWorktreeCommand;
+	case cmdDstWorktreeAdd:
+		return new DstWorktreeCommand;
+	case cmdDstWorktreeRemove:
+		return new DstWorktreeCommand(true);
 	case cmdAbout:
 		return new AboutCommand;
 	case cmdAutoTextTest:

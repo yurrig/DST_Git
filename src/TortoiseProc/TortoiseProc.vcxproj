@@ -149,9 +149,8 @@
     <ClCompile Include="CommitIsOnRefsDlg.cpp" />
     <ClCompile Include="CreateChangelistDlg.cpp" />
     <ClCompile Include="DiffLinesForStaging.cpp" />
-    <ClCompile Include="Commands\DstAddWorktreeCommand.cpp" />
-    <ClCompile Include="Commands\DstDropWorktreeCommand.cpp" />
-    <ClCompile Include="DstAddWorktreeDlg.cpp" />
+    <ClCompile Include="Commands\DstWorktreeCommand.cpp" />
+    <ClCompile Include="DstWorktreeDlg.cpp" />
     <ClCompile Include="FilterHelper.cpp" />
     <ClCompile Include="FindBar.cpp" />
     <ClCompile Include="FirstStartWizard.cpp" />
@@ -464,9 +463,8 @@
     <ClInclude Include="CommitIsOnRefsDlg.h" />
     <ClInclude Include="ConfigureGitExe.h" />
     <ClInclude Include="CreateChangelistDlg.h" />
-    <ClInclude Include="Commands\DstAddWorktreeCommand.h" />
-    <ClInclude Include="Commands\DstDropWorktreeCommand.h" />
-    <ClInclude Include="DstAddWorktreeDlg.h" />
+    <ClInclude Include="Commands\DstWorktreeCommand.h" />
+    <ClInclude Include="DstWorktreeDlg.h" />
     <ClInclude Include="EnableStagingTypes.h" />
     <ClInclude Include="DiffLinesForStaging.h" />
     <ClInclude Include="FilterHelper.h" />

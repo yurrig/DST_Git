@@ -180,11 +180,8 @@
     <Filter Include="Commands\LFS">
       <UniqueIdentifier>{fce39608-03c2-4646-9710-d244308dd3cd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Commands\DstAddWorktree">
+    <Filter Include="Commands\DstWorktree">
       <UniqueIdentifier>{e3bbbedd-ec15-4b06-95aa-d3b3981b0f83}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Commands\DstDropWorktree">
-      <UniqueIdentifier>{acd906ac-3b64-4e7b-a65b-892dbdc33d36}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1046,13 +1043,10 @@
     <ClCompile Include="WorktreeListDlg.cpp">
       <Filter>Commands\worktree</Filter>
     </ClCompile>
-    <ClCompile Include="Commands\DstAddWorktreeCommand.cpp">
-      <Filter>Commands\DstAddWorktree</Filter>
+    <ClCompile Include="Commands\DstWorktreeCommand.cpp">
+      <Filter>Commands\DstWorktree</Filter>
     </ClCompile>
-    <ClCompile Include="Commands\DstDropWorktreeCommand.cpp">
-      <Filter>Commands\DstDropWorktree</Filter>
-    </ClCompile>
-    <ClCompile Include="DstAddWorktreeDlg.cpp">
+    <ClCompile Include="DstWorktreeDlg.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1987,13 +1981,10 @@
     <ClInclude Include="..\Utils\URLFinder.h">
       <Filter>Utils\General</Filter>
     </ClInclude>
-    <ClInclude Include="Commands\DstAddWorktreeCommand.h">
-      <Filter>Commands\DstAddWorktree</Filter>
+    <ClInclude Include="Commands\DstWorktreeCommand.h">
+      <Filter>Commands\DstWorktree</Filter>
     </ClInclude>
-    <ClInclude Include="Commands\DstDropWorktreeCommand.h">
-      <Filter>Commands\DstDropWorktree</Filter>
-    </ClInclude>
-    <ClInclude Include="DstAddWorktreeDlg.h">
+    <ClInclude Include="DstWorktreeDlg.h">
       <Filter>Utils</Filter>
     </ClInclude>
   </ItemGroup>

@@ -39,10 +39,9 @@ extern MenuInfo menuInfo[];
 
 void InsertMenuItemToList(CListCtrl *list,CImageList *imagelist)
 {
-	int i=0;
 	int iconWidth = GetSystemMetrics(SM_CXSMICON);
 	int iconHeight = GetSystemMetrics(SM_CYSMICON);
-	while(menuInfo[i].command != ShellMenuLastEntry)
+	for (int i = 0; menuInfo[i].command != ShellMenuLastEntry; ++i)
 	{
 		if ((menuInfo[i].command != ShellSeparator &&
 		   menuInfo[i].command != ShellSubMenu &&
@@ -65,7 +64,6 @@ void InsertMenuItemToList(CListCtrl *list,CImageList *imagelist)
 			list->InsertItem(nIndex,temp,nImage);
 			list->SetItemData(nIndex,i);
 		}
-		i++;
 	}
 }
 

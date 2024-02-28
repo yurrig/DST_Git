@@ -1,6 +1,8 @@
 ﻿
 #pragma once
 
+#include "resource.h"
+#include "CommitDlg.h"
 #include "StandAloneDlg.h"
 #include "SciEdit.h"
 
@@ -34,4 +36,21 @@ public:
 	virtual BOOL OnInitDialog();
 	CSciEdit m_edtBranchName;
 	CSciEdit m_edtWorktreePath;
+};
+
+class DstDropWorktreeDlg : public CCommitDlg
+{
+public:
+	DstDropWorktreeDlg(CWnd* pParent = nullptr);
+
+	void EnableSaveRestore(LPCWSTR, bool bRectOnly = FALSE) override;
+	bool RunStartCommitHook() override;
+	BOOL OnInitDialog() override;
+	void OnOK() override;
+
+	void PrepareOkButton() override;
+
+	afx_msg LRESULT OnUpdateOKButton(WPARAM, LPARAM);
+
+	DECLARE_MESSAGE_MAP()
 };

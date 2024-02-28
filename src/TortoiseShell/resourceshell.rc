@@ -223,6 +223,10 @@ BEGIN
     IDS_MENUCOMMITSUBMODULE "&Commit submodule..."
     IDS_MENUWORKTREE        "Worktrees"
     IDS_MENUDESCWORKTREE    "Manages the worktrees of a repository"
+    IDS_MENUDSTWORKTREEADD     "Add DownStreamTech worktree"
+    IDS_MENUDESCDSTWORKTREEADD "Adds a DownStreamTech worktree"
+    IDS_MENUDSTWORKTREEREMOVE  "Remove DownStreamTech worktree"
+    IDS_MENUDESCDSTWORKTREEREMOVE "Removes a DownStreamTech worktree"
     IDS_MENUREVISIONGRAPH   "Revision &graph"
 END
 

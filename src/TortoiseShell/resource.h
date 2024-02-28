@@ -1,4 +1,4 @@
-//{{NO_DEPENDENCIES}}
+﻿//{{NO_DEPENDENCIES}}
 // Microsoft Visual C++ generated include file.
 // Used by resourceshell.rc
 //
@@ -198,6 +198,10 @@
 #define IDS_MENUCOMMITSUBMODULE         355
 #define IDS_MENUWORKTREE                356
 #define IDS_MENUDESCWORKTREE            357
+#define IDS_MENUDSTWORKTREEADD          358
+#define IDS_MENUDESCDSTWORKTREEADD      359
+#define IDS_MENUDSTWORKTREEREMOVE       360
+#define IDS_MENUDESCDSTWORKTREEREMOVE   361
 #define IDI_REVISIONGRAPH               366
 #define IDS_MENUREVISIONGRAPH           367
 #define IDS_MENUDESCREVISIONGRAPH       368

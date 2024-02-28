@@ -4,8 +4,8 @@
 #include "UnicodeUtils.h"
 #include "InputDlg.h"
 #include "ProgressDlg.h"
-#include "DstAddWorktreeCommand.h"
-#include "DstAddWorktreeDlg.h"
+#include "DstWorktreeCommand.h"
+#include "DstWorktreeDlg.h"
 
 #include <wincred.h>
 #include <atlenc.h>
@@ -200,6 +200,7 @@ BranchDesc BranchDescFromUrl(const std::string& url, const std::string& Pat)
 			std::string branch_name = "bugfix/" + product + "/" + id + " " + title;
 			ReplaceAll(branch_name, " ", "_");
 			ReplaceAll(branch_name, "_-_", "_");
+			ReplaceAll(branch_name, "=", "_");
 			return { BranchDesc::Defect, branch_name, id, product };
 		}
 	}
@@ -249,7 +250,7 @@ std::string WorkTreeDirName(const std::string& branch_name)
 
 } // namespace dst
 
-bool DstAddWorktreeCommand::Execute()
+bool DstWorktreeCommand::Execute()
 {
 	auto token = dst::ReadAccessToken();
 	if (token.empty())
@@ -279,7 +280,56 @@ bool DstAddWorktreeCommand::Execute()
 	auto current_path = fs::current_path();
 
 	fs::path path = parser.GetVal(L"path");
+
+	std::error_code ec;
+	if (!fs::exists(path, ec))
+		return false;
+
 	fs::current_path(path);
+	g_Git.m_CurrentDir = path.c_str();
+
+	if (m_bRemove)
+	{
+		try
+		{
+			auto pExplorerWnd = CWnd::FromHandle(GetExplorerHWND());
+
+			CString main_worktree;
+			if (g_Git.Run(L"git rev-parse --path-format=absolute --git-common-dir", &main_worktree, CP_UTF8))
+				main_worktree = CString();
+
+			main_worktree.Trim();
+			if (main_worktree.IsEmpty())
+			{
+				MessageBox(*pExplorerWnd, L"Could not find main worktree", L"TortoiseGit", MB_ICONERROR);
+				return false;
+			}
+
+			CString branch_name;
+			g_Git.Run(L"git rev-parse --abbrev-ref HEAD", &branch_name, CP_UTF8);
+			branch_name.Trim();
+
+			DstDropWorktreeDlg dlg(pExplorerWnd);
+			dlg.m_pathList.AddPath(CString(path.c_str()));
+			if (dlg.DoModal() == IDCANCEL)
+				return false;
+
+			fs::current_path(fs::path((LPCWSTR)main_worktree).parent_path());
+			g_Git.m_CurrentDir = fs::current_path().c_str();
+
+			CProgressDlg progress(nullptr);
+			progress.m_GitCmdList.push_back((L"git worktree remove " + path.wstring()).c_str());
+			progress.m_GitCmdList.push_back(L"git branch -d " + branch_name);
+
+			progress.DoModal();
+
+			return true;
+		}
+		catch (...)
+		{
+			return false;
+		}
+	}
 
 	fs::path main_worktree_dir_name = path.filename();
 
