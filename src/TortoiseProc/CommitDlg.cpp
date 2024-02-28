@@ -1503,7 +1503,8 @@ UINT CCommitDlg::StatusThread()
 		}
 
 		SetDlgItemText(IDC_COMMIT_TO, g_Git.GetCurrentBranch());
-		m_tooltips.AddTool(GetDlgItem(IDC_STATISTICS), m_ListCtrl.GetStatisticsString());
+		if (auto pStatistcs = GetDlgItem(IDC_STATISTICS))
+			m_tooltips.AddTool(pStatistcs, m_ListCtrl.GetStatisticsString());
 		if (m_ListCtrl.GetItemCount() != 0 && m_ListCtrl.GetTopIndex() == 0 && (m_bDoNotStoreLastSelectedLine || CRegDWORD(L"Software\\TortoiseGit\\RememberFileListPosition", TRUE) != TRUE))
 			m_ListCtrl.SetItemState(0, LVIS_SELECTED, LVIS_SELECTED);
 	}

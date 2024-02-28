@@ -289,6 +289,7 @@
 #define IDC_EXPORTFILE_LABEL            1074
 #define IDS_PROC_REBASE_EMPTYCOMMITMSG  1074
 #define IDC_ASTERISKLOGPREFIX           1074
+#define IDC_DELETEBRANCH                1074
 #define IDC_VERSIONBOX                  1075
 #define IDS_PROC_REBASE_ABORT           1075
 #define IDC_FULLCOMMITMESSAGEONLOGLINE  1075
@@ -1681,6 +1682,8 @@
 #define IDC_EDIT_WORKTREEPATH           1862
 #define IDC_EDIT_BRANCHNAME             1863
 #define IDC_BTN_WORKTREEPATH_BROWSE     1864
+#define IDC_BRANCH_NAME                 1865
+#define IDC_EDIT1                       1866
 #define IDS_LOG_REVERTTOREV_CONFIRM     1890
 #define IDS_LOG_REVERTREV_ERROR         1891
 #define IDS_LOG_STOPONCOPY_HINT         1892
@@ -2151,7 +2154,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        375
 #define _APS_NEXT_COMMAND_VALUE         32881
-#define _APS_NEXT_CONTROL_VALUE         1865
+#define _APS_NEXT_CONTROL_VALUE         1867
 #define _APS_NEXT_SYMED_VALUE           201
 #endif
 #endif

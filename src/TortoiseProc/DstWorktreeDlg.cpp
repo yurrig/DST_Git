@@ -95,34 +95,6 @@ void DstAddWorktreeDlg::Update()
 	GetDlgItem(IDOK)->EnableWindow(!m_strBranchName.IsEmpty());
 }
 
-static std::vector<UINT> CtrlsToHide = {
-	IDC_CHECK_NEWBRANCH,
-	IDC_BUGIDLABEL,
-	IDC_BUGID,
-	IDC_BUGTRAQBUTTON,
-	IDC_MESSAGEGROUP,
-	IDC_LOGMESSAGE,
-	IDC_COMMIT_AMEND,
-	IDC_COMMIT_SETDATETIME,
-	IDC_COMMIT_SETAUTHOR,
-	IDC_COMMIT_AMENDDIFF,
-	IDC_COMMIT_DATEPICKER,
-	IDC_COMMIT_TIMEPICKER,
-	IDC_COMMIT_AS_COMMIT_DATE,
-	IDC_COMMIT_AUTHORDATA,
-	IDC_SIGNOFF,
-	IDC_SPLITTER,
-	IDC_STAGINGSUPPORT,
-	IDC_NOAUTOSELECTSUBMODULES,
-	IDC_WHOLE_PROJECT,
-	IDC_COMMIT_MESSAGEONLY,
-	IDC_VIEW_PATCH,
-	IDC_PARTIAL_STAGING,
-	IDC_PARTIAL_UNSTAGING,
-	IDI_MERGEACTIVE,
-	IDC_COMMIT_TO,
-};
-
 DstDropWorktreeDlg::DstDropWorktreeDlg(CWnd* pParent)
 	: CCommitDlg(pParent, IDD_DSTDROPWORKTREE)
 {
@@ -147,16 +119,19 @@ BOOL DstDropWorktreeDlg::OnInitDialog()
 
 	CCommitDlg::OnInitDialog();
 
-	for (auto id : CtrlsToHide)
-	{
-		if (auto pCtrl = GetDlgItem(id))
-			pCtrl->ShowWindow(SW_HIDE);
-	}
-	GetDlgItem(IDC_COMMITLABEL)->SetWindowText(L"Worktree path: ");
-
 	pedtWorktreePath->MoveWindow(rcWorktreePath);
-	pedtWorktreePath->SetWindowText(m_pathList[0].GetDisplayString());
+	pedtWorktreePath->SetWindowText(g_Git.m_CurrentDir);
 	GetDlgItem(IDOK)->SetWindowText(L"Remove");
+
+	if (auto pDeleteBranch = (CButton*)GetDlgItem(IDC_DELETEBRANCH))
+	{
+		AddAnchor(*pDeleteBranch, TOP_LEFT);
+		pDeleteBranch->SetCheck(m_bDeleteBranch ? BST_CHECKED : BST_UNCHECKED);
+	}
+	if (auto pBranchName = (CEdit*)GetDlgItem(IDC_BRANCH_NAME))
+	{
+		pBranchName->SetWindowText(g_Git.GetCurrentBranch());
+	}
 
 	AddAnchor(IDC_EDIT_WORKTREEPATH, TOP_LEFT, TOP_LEFT);
 
@@ -165,6 +140,9 @@ BOOL DstDropWorktreeDlg::OnInitDialog()
 
 void DstDropWorktreeDlg::OnOK()
 {
+	if (auto pDeleteBranch = (CButton*)GetDlgItem(IDC_DELETEBRANCH))
+		m_bDeleteBranch = pDeleteBranch->GetCheck() == BST_CHECKED;
+
 	CResizableStandAloneDialog::OnOK();
 }
 

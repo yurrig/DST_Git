@@ -310,16 +310,18 @@ bool DstWorktreeCommand::Execute()
 			branch_name.Trim();
 
 			DstDropWorktreeDlg dlg(pExplorerWnd);
-			dlg.m_pathList.AddPath(CString(path.c_str()));
+			//dlg.m_pathList.AddPath(CString(path.c_str()));
 			if (dlg.DoModal() == IDCANCEL)
 				return false;
 
 			fs::current_path(fs::path((LPCWSTR)main_worktree).parent_path());
-			g_Git.m_CurrentDir = fs::current_path().c_str();
+			g_Git.m_CurrentDir = (fs::current_path() / "").c_str();
 
 			CProgressDlg progress(nullptr);
 			progress.m_GitCmdList.push_back((L"git worktree remove " + path.wstring()).c_str());
-			progress.m_GitCmdList.push_back(L"git branch -d " + branch_name);
+
+			if (dlg.DeleteBranch())
+				progress.m_GitCmdList.push_back(L"git branch -d " + branch_name);
 
 			progress.DoModal();
 

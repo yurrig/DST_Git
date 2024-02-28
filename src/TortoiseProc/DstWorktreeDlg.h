@@ -40,6 +40,8 @@ public:
 
 class DstDropWorktreeDlg : public CCommitDlg
 {
+	BOOL m_bDeleteBranch = TRUE;
+
 public:
 	DstDropWorktreeDlg(CWnd* pParent = nullptr);
 
@@ -49,6 +51,8 @@ public:
 	void OnOK() override;
 
 	void PrepareOkButton() override;
+
+	BOOL DeleteBranch() const { return m_bDeleteBranch; }
 
 	afx_msg LRESULT OnUpdateOKButton(WPARAM, LPARAM);
 
