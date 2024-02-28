@@ -79,36 +79,66 @@ CCommitDlg::~CCommitDlg()
 void CCommitDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CResizableStandAloneDialog::DoDataExchange(pDX);
-	DDX_Control(pDX, IDC_FILELIST, m_ListCtrl);
-	DDX_Control(pDX, IDC_LOGMESSAGE, m_cLogMessage);
-	DDX_Check(pDX, IDC_SHOWUNVERSIONED, m_bShowUnversioned);
-	DDX_Check(pDX, IDC_COMMIT_SETDATETIME, m_bSetCommitDateTime);
-	DDX_Check(pDX, IDC_CHECK_NEWBRANCH, m_bCreateNewBranch);
-	DDX_Text(pDX, IDC_COMMIT_AUTHORDATA, m_sAuthor);
-	DDX_Check(pDX, IDC_WHOLE_PROJECT, m_bWholeProject);
-	DDX_Control(pDX, IDC_SPLITTER, m_wndSplitter);
-	DDX_Check(pDX, IDC_NOAUTOSELECTSUBMODULES, m_bDoNotAutoselectSubmodules);
-	DDX_Check(pDX,IDC_COMMIT_AMEND,m_bCommitAmend);
-	DDX_Check(pDX, IDC_COMMIT_MESSAGEONLY, m_bCommitMessageOnly);
-	DDX_Check(pDX,IDC_COMMIT_AMENDDIFF,m_bAmendDiffToLastCommit);
-	DDX_Check(pDX, IDC_COMMIT_SETAUTHOR, m_bSetAuthor);
-	DDX_Check(pDX, IDC_STAGINGSUPPORT, m_bStagingSupport);
-	DDX_Control(pDX,IDC_VIEW_PATCH,m_ctrlShowPatch);
-	DDX_Control(pDX, IDC_PARTIAL_STAGING, m_ctrlPartialStaging);
-	DDX_Control(pDX, IDC_PARTIAL_UNSTAGING, m_ctrlPartialUnstaging);
-	DDX_Control(pDX, IDC_COMMIT_DATEPICKER, m_CommitDate);
-	DDX_Control(pDX, IDC_COMMIT_TIMEPICKER, m_CommitTime);
-	DDX_Control(pDX, IDC_COMMIT_AS_COMMIT_DATE, m_AsCommitDateCtrl);
-	DDX_Control(pDX, IDC_CHECKALL, m_CheckAll);
-	DDX_Control(pDX, IDC_CHECKNONE, m_CheckNone);
-	DDX_Control(pDX, IDC_CHECKUNVERSIONED, m_CheckUnversioned);
-	DDX_Control(pDX, IDC_CHECKVERSIONED, m_CheckVersioned);
-	DDX_Control(pDX, IDC_CHECKADDED, m_CheckAdded);
-	DDX_Control(pDX, IDC_CHECKDELETED, m_CheckDeleted);
-	DDX_Control(pDX, IDC_CHECKMODIFIED, m_CheckModified);
-	DDX_Control(pDX, IDC_CHECKFILES, m_CheckFiles);
-	DDX_Control(pDX, IDC_CHECKSUBMODULES, m_CheckSubmodules);
-	DDX_Control(pDX, IDOK, m_ctrlOkButton);
+	if (GetDlgItem(IDC_FILELIST))
+		DDX_Control(pDX, IDC_FILELIST, m_ListCtrl);
+	if (GetDlgItem(IDC_LOGMESSAGE))
+		DDX_Control(pDX, IDC_LOGMESSAGE, m_cLogMessage);
+	if (GetDlgItem(IDC_SHOWUNVERSIONED))
+		DDX_Check(pDX, IDC_SHOWUNVERSIONED, m_bShowUnversioned);
+	if (GetDlgItem(IDC_COMMIT_SETDATETIME))
+		DDX_Check(pDX, IDC_COMMIT_SETDATETIME, m_bSetCommitDateTime);
+	if (GetDlgItem(IDC_CHECK_NEWBRANCH))
+		DDX_Check(pDX, IDC_CHECK_NEWBRANCH, m_bCreateNewBranch);
+	if (GetDlgItem(IDC_COMMIT_AUTHORDATA))
+		DDX_Text(pDX, IDC_COMMIT_AUTHORDATA, m_sAuthor);
+	if (GetDlgItem(IDC_WHOLE_PROJECT))
+		DDX_Check(pDX, IDC_WHOLE_PROJECT, m_bWholeProject);
+	if (GetDlgItem(IDC_SPLITTER))
+		DDX_Control(pDX, IDC_SPLITTER, m_wndSplitter);
+	if (GetDlgItem(IDC_NOAUTOSELECTSUBMODULES))
+		DDX_Check(pDX, IDC_NOAUTOSELECTSUBMODULES, m_bDoNotAutoselectSubmodules);
+	if (GetDlgItem(IDC_COMMIT_AMEND))
+		DDX_Check(pDX, IDC_COMMIT_AMEND, m_bCommitAmend);
+	if (GetDlgItem(IDC_COMMIT_MESSAGEONLY))
+		DDX_Check(pDX, IDC_COMMIT_MESSAGEONLY, m_bCommitMessageOnly);
+	if (GetDlgItem(IDC_COMMIT_AMENDDIFF))
+		DDX_Check(pDX, IDC_COMMIT_AMENDDIFF, m_bAmendDiffToLastCommit);
+	if (GetDlgItem(IDC_COMMIT_SETAUTHOR))
+		DDX_Check(pDX, IDC_COMMIT_SETAUTHOR, m_bSetAuthor);
+	if (GetDlgItem(IDC_STAGINGSUPPORT))
+		DDX_Check(pDX, IDC_STAGINGSUPPORT, m_bStagingSupport);
+	if (GetDlgItem(IDC_VIEW_PATCH))
+		DDX_Control(pDX, IDC_VIEW_PATCH, m_ctrlShowPatch);
+	if (GetDlgItem(IDC_PARTIAL_STAGING))
+		DDX_Control(pDX, IDC_PARTIAL_STAGING, m_ctrlPartialStaging);
+	if (GetDlgItem(IDC_PARTIAL_UNSTAGING))
+		DDX_Control(pDX, IDC_PARTIAL_UNSTAGING, m_ctrlPartialUnstaging);
+	if (GetDlgItem(IDC_COMMIT_DATEPICKER))
+		DDX_Control(pDX, IDC_COMMIT_DATEPICKER, m_CommitDate);
+	if (GetDlgItem(IDC_COMMIT_TIMEPICKER))
+		DDX_Control(pDX, IDC_COMMIT_TIMEPICKER, m_CommitTime);
+	if (GetDlgItem(IDC_COMMIT_AS_COMMIT_DATE))
+		DDX_Control(pDX, IDC_COMMIT_AS_COMMIT_DATE, m_AsCommitDateCtrl);
+	if (GetDlgItem(IDC_CHECKALL))
+		DDX_Control(pDX, IDC_CHECKALL, m_CheckAll);
+	if (GetDlgItem(IDC_CHECKNONE))
+		DDX_Control(pDX, IDC_CHECKNONE, m_CheckNone);
+	if (GetDlgItem(IDC_CHECKUNVERSIONED))
+		DDX_Control(pDX, IDC_CHECKUNVERSIONED, m_CheckUnversioned);
+	if (GetDlgItem(IDC_CHECKVERSIONED))
+		DDX_Control(pDX, IDC_CHECKVERSIONED, m_CheckVersioned);
+	if (GetDlgItem(IDC_CHECKADDED))
+		DDX_Control(pDX, IDC_CHECKADDED, m_CheckAdded);
+	if (GetDlgItem(IDC_CHECKDELETED))
+		DDX_Control(pDX, IDC_CHECKDELETED, m_CheckDeleted);
+	if (GetDlgItem(IDC_CHECKMODIFIED))
+		DDX_Control(pDX, IDC_CHECKMODIFIED, m_CheckModified);
+	if (GetDlgItem(IDC_CHECKFILES))
+		DDX_Control(pDX, IDC_CHECKFILES, m_CheckFiles);
+	if (GetDlgItem(IDC_CHECKSUBMODULES))
+		DDX_Control(pDX, IDC_CHECKSUBMODULES, m_CheckSubmodules);
+	if (GetDlgItem(IDOK))
+		DDX_Control(pDX, IDOK, m_ctrlOkButton);
 }
 
 BEGIN_MESSAGE_MAP(CCommitDlg, CResizableStandAloneDialog)
@@ -234,88 +264,107 @@ BOOL CCommitDlg::OnInitDialog()
 
 	SetDlgTitle();
 
-	// git commit accepts only 1970-01-01 to 2099-12-31 regardless timezone
-	COleDateTime minDate(1970, 1, 1, 0, 0, 0), maxDate(2099, 12, 31, 0, 0, 0);
-	m_CommitDate.SetRange(&minDate, &maxDate);
-	if (m_bSetCommitDateTime)
+	if (m_CommitDate)
 	{
-		m_CommitDate.SetTime(&m_wantCommitTime);
-		m_CommitTime.SetTime(&m_wantCommitTime);
-		GetDlgItem(IDC_COMMIT_DATEPICKER)->ShowWindow(SW_SHOW);
-		GetDlgItem(IDC_COMMIT_TIMEPICKER)->ShowWindow(SW_SHOW);
+		// git commit accepts only 1970-01-01 to 2099-12-31 regardless timezone
+		COleDateTime minDate(1970, 1, 1, 0, 0, 0), maxDate(2099, 12, 31, 0, 0, 0);
+		m_CommitDate.SetRange(&minDate, &maxDate);
+		if (m_bSetCommitDateTime)
+		{
+			m_CommitDate.SetTime(&m_wantCommitTime);
+			m_CommitTime.SetTime(&m_wantCommitTime);
+			GetDlgItem(IDC_COMMIT_DATEPICKER)->ShowWindow(SW_SHOW);
+			GetDlgItem(IDC_COMMIT_TIMEPICKER)->ShowWindow(SW_SHOW);
+		}
 	}
 
 	UpdateData(FALSE);
 
-	m_ListCtrl.Init(GITSLC_COLEXT | GITSLC_COLSTATUS | GITSLC_COLADD | GITSLC_COLDEL, L"CommitDlg", (GITSLC_POPALL ^ (GITSLC_POPCOMMIT | GITSLC_POPSAVEAS | GITSLC_POPPREPAREDIFF)), true, true);
-	m_ListCtrl.SetStatLabel(GetDlgItem(IDC_STATISTICS));
-	m_ListCtrl.SetCancelBool(&m_bCancelled);
-	m_ListCtrl.SetEmptyString(IDS_COMMITDLG_NOTHINGTOCOMMIT);
-	m_ListCtrl.EnableFileDrop();
-	m_ListCtrl.SetBackgroundImage(IDI_COMMIT_BKG);
+	if (m_ListCtrl)
+	{
+		m_ListCtrl.Init(GITSLC_COLEXT | GITSLC_COLSTATUS | GITSLC_COLADD | GITSLC_COLDEL, L"CommitDlg", (GITSLC_POPALL ^ (GITSLC_POPCOMMIT | GITSLC_POPSAVEAS | GITSLC_POPPREPAREDIFF)), true, true);
+		m_ListCtrl.SetStatLabel(GetDlgItem(IDC_STATISTICS));
+		m_ListCtrl.SetCancelBool(&m_bCancelled);
+		m_ListCtrl.SetEmptyString(IDS_COMMITDLG_NOTHINGTOCOMMIT);
+		m_ListCtrl.EnableFileDrop();
+		m_ListCtrl.SetBackgroundImage(IDI_COMMIT_BKG);
+	}
 
 	//this->DialogEnableWindow(IDC_COMMIT_AMEND,FALSE);
 
-	m_cLogMessage.Init(m_ProjectProperties);
-	m_cLogMessage.SetFont(CAppUtils::GetLogFontName(), CAppUtils::GetLogFontSize());
-	m_cLogMessage.RegisterContextMenuHandler(this);
-	std::map<int, UINT> icons;
-	icons[AUTOCOMPLETE_SPELLING] = IDI_SPELL;
-	icons[AUTOCOMPLETE_FILENAME] = IDI_FILE;
-	icons[AUTOCOMPLETE_PROGRAMCODE] = IDI_CODE;
-	icons[AUTOCOMPLETE_SNIPPET] = IDI_SNIPPET;
-	m_cLogMessage.SetIcon(icons);
+	if (m_cLogMessage)
+	{
+		m_cLogMessage.Init(m_ProjectProperties);
+		m_cLogMessage.SetFont(CAppUtils::GetLogFontName(), CAppUtils::GetLogFontSize());
+		m_cLogMessage.RegisterContextMenuHandler(this);
+		std::map<int, UINT> icons;
+		icons[AUTOCOMPLETE_SPELLING] = IDI_SPELL;
+		icons[AUTOCOMPLETE_FILENAME] = IDI_FILE;
+		icons[AUTOCOMPLETE_PROGRAMCODE] = IDI_CODE;
+		icons[AUTOCOMPLETE_SNIPPET] = IDI_SNIPPET;
+		m_cLogMessage.SetIcon(icons);
+	}
 
 	OnEnChangeLogmessage();
 
-	m_tooltips.AddTool(IDC_COMMIT_AMEND,IDS_COMMIT_AMEND_TT);
-	m_tooltips.AddTool(IDC_MERGEACTIVE, IDC_MERGEACTIVE_TT);
-	m_tooltips.AddTool(IDC_COMMIT_MESSAGEONLY, IDS_COMMIT_MESSAGEONLY_TT);
-	m_tooltips.AddTool(IDC_COMMIT_AS_COMMIT_DATE, IDS_COMMIT_AS_COMMIT_DATE_TT);
+	if (GetDlgItem(IDC_COMMIT_AMEND))
+		m_tooltips.AddTool(IDC_COMMIT_AMEND, IDS_COMMIT_AMEND_TT);
+	if (GetDlgItem(IDC_MERGEACTIVE))
+		m_tooltips.AddTool(IDC_MERGEACTIVE, IDC_MERGEACTIVE_TT);
+	if (GetDlgItem(IDC_COMMIT_MESSAGEONLY))
+		m_tooltips.AddTool(IDC_COMMIT_MESSAGEONLY, IDS_COMMIT_MESSAGEONLY_TT);
+	if (GetDlgItem(IDC_COMMIT_AS_COMMIT_DATE))
+		m_tooltips.AddTool(IDC_COMMIT_AS_COMMIT_DATE, IDS_COMMIT_AS_COMMIT_DATE_TT);
 
 	CBugTraqAssociations bugtraq_associations;
 	bugtraq_associations.Load(m_ProjectProperties.GetProviderUUID(), m_ProjectProperties.sProviderParams);
 
-	if (bugtraq_associations.FindProvider(g_Git.m_CurrentDir, &m_bugtraq_association))
+	if (GetDlgItem(IDC_BUGTRAQBUTTON))
 	{
-		CComPtr<IBugTraqProvider> pProvider;
-		HRESULT hr = pProvider.CoCreateInstance(m_bugtraq_association.GetProviderClass());
-		if (SUCCEEDED(hr))
+		if (bugtraq_associations.FindProvider(g_Git.m_CurrentDir, &m_bugtraq_association))
 		{
-			m_BugTraqProvider = pProvider;
-			ATL::CComBSTR temp;
-			ATL::CComBSTR parameters(m_bugtraq_association.GetParameters());
-			if (SUCCEEDED(hr = pProvider->GetLinkText(GetSafeHwnd(), parameters, &temp)))
+			CComPtr<IBugTraqProvider> pProvider;
+			HRESULT hr = pProvider.CoCreateInstance(m_bugtraq_association.GetProviderClass());
+			if (SUCCEEDED(hr))
 			{
-				SetDlgItemText(IDC_BUGTRAQBUTTON, temp);
-				GetDlgItem(IDC_BUGTRAQBUTTON)->EnableWindow(TRUE);
-				GetDlgItem(IDC_BUGTRAQBUTTON)->ShowWindow(SW_SHOW);
+				m_BugTraqProvider = pProvider;
+				ATL::CComBSTR temp;
+				ATL::CComBSTR parameters(m_bugtraq_association.GetParameters());
+				if (SUCCEEDED(hr = pProvider->GetLinkText(GetSafeHwnd(), parameters, &temp)))
+				{
+					SetDlgItemText(IDC_BUGTRAQBUTTON, temp);
+					GetDlgItem(IDC_BUGTRAQBUTTON)->EnableWindow(TRUE);
+					GetDlgItem(IDC_BUGTRAQBUTTON)->ShowWindow(SW_SHOW);
+				}
 			}
 		}
-	}
-	else
-	{
-		GetDlgItem(IDC_BUGTRAQBUTTON)->ShowWindow(SW_HIDE);
-		GetDlgItem(IDC_BUGTRAQBUTTON)->EnableWindow(FALSE);
-	}
-	if (!m_ProjectProperties.sMessage.IsEmpty())
-	{
-		GetDlgItem(IDC_BUGID)->ShowWindow(SW_SHOW);
-		GetDlgItem(IDC_BUGIDLABEL)->ShowWindow(SW_SHOW);
-		if (!m_ProjectProperties.sLabel.IsEmpty())
-			SetDlgItemText(IDC_BUGIDLABEL, m_ProjectProperties.sLabel);
-		GetDlgItem(IDC_BUGID)->SetFocus();
-		CString sBugID = m_ProjectProperties.GetBugIDFromLog(m_sLogMessage);
-		if (!sBugID.IsEmpty())
+		else
 		{
-			SetDlgItemText(IDC_BUGID, sBugID);
+			GetDlgItem(IDC_BUGTRAQBUTTON)->ShowWindow(SW_HIDE);
+			GetDlgItem(IDC_BUGTRAQBUTTON)->EnableWindow(FALSE);
 		}
 	}
-	else
+	if (GetDlgItem(IDC_BUGID) && GetDlgItem(IDC_BUGIDLABEL))
 	{
-		GetDlgItem(IDC_BUGID)->ShowWindow(SW_HIDE);
-		GetDlgItem(IDC_BUGIDLABEL)->ShowWindow(SW_HIDE);
-		GetDlgItem(IDC_LOGMESSAGE)->SetFocus();
+		if (!m_ProjectProperties.sMessage.IsEmpty())
+		{
+			GetDlgItem(IDC_BUGID)->ShowWindow(SW_SHOW);
+			GetDlgItem(IDC_BUGIDLABEL)->ShowWindow(SW_SHOW);
+			if (!m_ProjectProperties.sLabel.IsEmpty())
+				SetDlgItemText(IDC_BUGIDLABEL, m_ProjectProperties.sLabel);
+			GetDlgItem(IDC_BUGID)->SetFocus();
+			CString sBugID = m_ProjectProperties.GetBugIDFromLog(m_sLogMessage);
+			if (!sBugID.IsEmpty())
+			{
+				SetDlgItemText(IDC_BUGID, sBugID);
+			}
+		}
+		else
+		{
+			GetDlgItem(IDC_BUGID)->ShowWindow(SW_HIDE);
+			GetDlgItem(IDC_BUGIDLABEL)->ShowWindow(SW_HIDE);
+			GetDlgItem(IDC_LOGMESSAGE)->SetFocus();
+		}
 	}
 
 	if (!m_sLogMessage.IsEmpty())
@@ -354,77 +403,126 @@ BOOL CCommitDlg::OnInitDialog()
 	rc = AdjustStaticSize(IDC_CHECKSUBMODULES, rc, LINKSPACING);
 
 	GetClientRect(m_DlgOrigRect);
-	m_cLogMessage.GetClientRect(m_LogMsgOrigRect);
+	if (m_cLogMessage)
+		m_cLogMessage.GetClientRect(m_LogMsgOrigRect);
 
-	AddAnchor(IDC_COMMITLABEL, TOP_LEFT, ANCHOR(94, 0));
-	AddAnchor(IDC_BUGIDLABEL, TOP_RIGHT);
-	AddAnchor(IDC_BUGID, TOP_RIGHT);
-	AddAnchor(IDC_BUGTRAQBUTTON, TOP_RIGHT);
-	AddAnchor(IDC_COMMIT_TO, ANCHOR(6, 0), TOP_RIGHT);
-	AddAnchor(IDC_CHECK_NEWBRANCH, TOP_RIGHT);
-	AddAnchor(IDC_NEWBRANCH, ANCHOR(6,0), TOP_RIGHT);
-	AddAnchor(IDC_MESSAGEGROUP, TOP_LEFT, TOP_RIGHT);
-//	AddAnchor(IDC_HISTORY, TOP_LEFT);
-	AddAnchor(IDC_LOGMESSAGE, TOP_LEFT, TOP_RIGHT);
-	AddAnchor(IDC_SIGNOFF, TOP_RIGHT);
-	AddAnchor(IDC_VIEW_PATCH, BOTTOM_RIGHT);
-	AddAnchor(IDC_PARTIAL_STAGING, BOTTOM_RIGHT);
-	AddAnchor(IDC_PARTIAL_UNSTAGING, BOTTOM_RIGHT);
-	AddAnchor(IDC_LISTGROUP, TOP_LEFT, BOTTOM_RIGHT);
-	AddAnchor(IDC_SPLITTER, TOP_LEFT, TOP_RIGHT);
-	AddAnchor(IDC_FILELIST, TOP_LEFT, BOTTOM_RIGHT);
-	AddAnchor(IDC_SHOWUNVERSIONED, BOTTOM_LEFT);
-	AddAnchor(IDC_STATISTICS, BOTTOM_LEFT, BOTTOM_RIGHT);
-	AddAnchor(IDC_TEXT_INFO, TOP_RIGHT);
-	AddAnchor(IDC_WHOLE_PROJECT, BOTTOM_LEFT);
-	AddAnchor(IDC_NOAUTOSELECTSUBMODULES, BOTTOM_LEFT);
-	AddAnchor(IDC_STAGINGSUPPORT, BOTTOM_LEFT);
-	AddAnchor(IDOK, BOTTOM_RIGHT);
-	AddAnchor(IDCANCEL, BOTTOM_RIGHT);
-	AddAnchor(IDHELP, BOTTOM_RIGHT);
-	AddAnchor(IDC_MERGEACTIVE, BOTTOM_RIGHT);
-	AddAnchor(IDC_COMMIT_AMEND,TOP_LEFT);
-	AddAnchor(IDC_COMMIT_MESSAGEONLY, BOTTOM_LEFT);
-	AddAnchor(IDC_COMMIT_AMENDDIFF,TOP_LEFT);
-	AddAnchor(IDC_COMMIT_SETDATETIME,TOP_LEFT);
-	AddAnchor(IDC_COMMIT_DATEPICKER,TOP_LEFT);
-	AddAnchor(IDC_COMMIT_TIMEPICKER,TOP_LEFT);
-	AddAnchor(IDC_COMMIT_AS_COMMIT_DATE, TOP_LEFT);
-	AddAnchor(IDC_COMMIT_SETAUTHOR, TOP_LEFT);
-	AddAnchor(IDC_COMMIT_AUTHORDATA, TOP_LEFT, TOP_RIGHT);
+	if (GetDlgItem(IDC_COMMITLABEL))
+		AddAnchor(IDC_COMMITLABEL, TOP_LEFT, ANCHOR(94, 0));
+	if (GetDlgItem(IDC_BUGIDLABEL))
+		AddAnchor(IDC_BUGIDLABEL, TOP_RIGHT);
+	if (GetDlgItem(IDC_BUGID))
+		AddAnchor(IDC_BUGID, TOP_RIGHT);
+	if (GetDlgItem(IDC_BUGTRAQBUTTON))
+		AddAnchor(IDC_BUGTRAQBUTTON, TOP_RIGHT);
+	if (GetDlgItem(IDC_COMMIT_TO))
+		AddAnchor(IDC_COMMIT_TO, ANCHOR(6, 0), TOP_RIGHT);
+	if (GetDlgItem(IDC_CHECK_NEWBRANCH))
+		AddAnchor(IDC_CHECK_NEWBRANCH, TOP_RIGHT);
+	if (GetDlgItem(IDC_NEWBRANCH))
+		AddAnchor(IDC_NEWBRANCH, ANCHOR(6, 0), TOP_RIGHT);
+	if (GetDlgItem(IDC_MESSAGEGROUP))
+		AddAnchor(IDC_MESSAGEGROUP, TOP_LEFT, TOP_RIGHT);
+	//	AddAnchor(IDC_HISTORY, TOP_LEFT);
+	if (GetDlgItem(IDC_LOGMESSAGE))
+		AddAnchor(IDC_LOGMESSAGE, TOP_LEFT, TOP_RIGHT);
+	if (GetDlgItem(IDC_SIGNOFF))
+		AddAnchor(IDC_SIGNOFF, TOP_RIGHT);
+	if (GetDlgItem(IDC_VIEW_PATCH))
+		AddAnchor(IDC_VIEW_PATCH, BOTTOM_RIGHT);
+	if (GetDlgItem(IDC_PARTIAL_STAGING))
+		AddAnchor(IDC_PARTIAL_STAGING, BOTTOM_RIGHT);
+	if (GetDlgItem(IDC_PARTIAL_UNSTAGING))
+		AddAnchor(IDC_PARTIAL_UNSTAGING, BOTTOM_RIGHT);
+	if (GetDlgItem(IDC_LISTGROUP))
+		AddAnchor(IDC_LISTGROUP, TOP_LEFT, BOTTOM_RIGHT);
+	if (GetDlgItem(IDC_SPLITTER))
+		AddAnchor(IDC_SPLITTER, TOP_LEFT, TOP_RIGHT);
+	if (GetDlgItem(IDC_FILELIST))
+		AddAnchor(IDC_FILELIST, TOP_LEFT, BOTTOM_RIGHT);
+	if (GetDlgItem(IDC_SHOWUNVERSIONED))
+		AddAnchor(IDC_SHOWUNVERSIONED, BOTTOM_LEFT);
+	if (GetDlgItem(IDC_STATISTICS))
+		AddAnchor(IDC_STATISTICS, BOTTOM_LEFT, BOTTOM_RIGHT);
+	if (GetDlgItem(IDC_TEXT_INFO))
+		AddAnchor(IDC_TEXT_INFO, TOP_RIGHT);
+	if (GetDlgItem(IDC_WHOLE_PROJECT))
+		AddAnchor(IDC_WHOLE_PROJECT, BOTTOM_LEFT);
+	if (GetDlgItem(IDC_NOAUTOSELECTSUBMODULES))
+		AddAnchor(IDC_NOAUTOSELECTSUBMODULES, BOTTOM_LEFT);
+	if (GetDlgItem(IDC_STAGINGSUPPORT))
+		AddAnchor(IDC_STAGINGSUPPORT, BOTTOM_LEFT);
+	if (GetDlgItem(IDOK))
+		AddAnchor(IDOK, BOTTOM_RIGHT);
+	if (GetDlgItem(IDCANCEL))
+		AddAnchor(IDCANCEL, BOTTOM_RIGHT);
+	if (GetDlgItem(IDHELP))
+		AddAnchor(IDHELP, BOTTOM_RIGHT);
+	if (GetDlgItem(IDC_MERGEACTIVE))
+		AddAnchor(IDC_MERGEACTIVE, BOTTOM_RIGHT);
+	if (GetDlgItem(IDC_COMMIT_AMEND))
+		AddAnchor(IDC_COMMIT_AMEND, TOP_LEFT);
+	if (GetDlgItem(IDC_COMMIT_MESSAGEONLY))
+		AddAnchor(IDC_COMMIT_MESSAGEONLY, BOTTOM_LEFT);
+	if (GetDlgItem(IDC_COMMIT_AMENDDIFF))
+		AddAnchor(IDC_COMMIT_AMENDDIFF, TOP_LEFT);
+	if (GetDlgItem(IDC_COMMIT_SETDATETIME))
+		AddAnchor(IDC_COMMIT_SETDATETIME, TOP_LEFT);
+	if (GetDlgItem(IDC_COMMIT_DATEPICKER))
+		AddAnchor(IDC_COMMIT_DATEPICKER, TOP_LEFT);
+	if (GetDlgItem(IDC_COMMIT_TIMEPICKER))
+		AddAnchor(IDC_COMMIT_TIMEPICKER, TOP_LEFT);
+	if (GetDlgItem(IDC_COMMIT_AS_COMMIT_DATE))
+		AddAnchor(IDC_COMMIT_AS_COMMIT_DATE, TOP_LEFT);
+	if (GetDlgItem(IDC_COMMIT_SETAUTHOR))
+		AddAnchor(IDC_COMMIT_SETAUTHOR, TOP_LEFT);
+	if (GetDlgItem(IDC_COMMIT_AUTHORDATA))
+		AddAnchor(IDC_COMMIT_AUTHORDATA, TOP_LEFT, TOP_RIGHT);
 
-	AddAnchor(IDC_SELECTLABEL, TOP_LEFT);
-	AddAnchor(IDC_CHECKALL, TOP_LEFT);
-	AddAnchor(IDC_CHECKNONE, TOP_LEFT);
-	AddAnchor(IDC_CHECKUNVERSIONED, TOP_LEFT);
-	AddAnchor(IDC_CHECKVERSIONED, TOP_LEFT);
-	AddAnchor(IDC_CHECKADDED, TOP_LEFT);
-	AddAnchor(IDC_CHECKDELETED, TOP_LEFT);
-	AddAnchor(IDC_CHECKMODIFIED, TOP_LEFT);
-	AddAnchor(IDC_CHECKFILES, TOP_LEFT);
-	AddAnchor(IDC_CHECKSUBMODULES, TOP_LEFT);
+	if (GetDlgItem(IDC_SELECTLABEL))
+		AddAnchor(IDC_SELECTLABEL, TOP_LEFT);
+	if (GetDlgItem(IDC_CHECKALL))
+		AddAnchor(IDC_CHECKALL, TOP_LEFT);
+	if (GetDlgItem(IDC_CHECKNONE))
+		AddAnchor(IDC_CHECKNONE, TOP_LEFT);
+	if (GetDlgItem(IDC_CHECKUNVERSIONED))
+		AddAnchor(IDC_CHECKUNVERSIONED, TOP_LEFT);
+	if (GetDlgItem(IDC_CHECKVERSIONED))
+		AddAnchor(IDC_CHECKVERSIONED, TOP_LEFT);
+	if (GetDlgItem(IDC_CHECKADDED))
+		AddAnchor(IDC_CHECKADDED, TOP_LEFT);
+	if (GetDlgItem(IDC_CHECKDELETED))
+		AddAnchor(IDC_CHECKDELETED, TOP_LEFT);
+	if (GetDlgItem(IDC_CHECKMODIFIED))
+		AddAnchor(IDC_CHECKMODIFIED, TOP_LEFT);
+	if (GetDlgItem(IDC_CHECKFILES))
+		AddAnchor(IDC_CHECKFILES, TOP_LEFT);
+	if (GetDlgItem(IDC_CHECKSUBMODULES))
+		AddAnchor(IDC_CHECKSUBMODULES, TOP_LEFT);
 
 	if (GetExplorerHWND())
 		CenterWindow(CWnd::FromHandle(GetExplorerHWND()));
 	EnableSaveRestore(L"CommitDlg");
-	DWORD yPos = CDPIAware::Instance().ScaleY(GetSafeHwnd(), CRegDWORD(L"Software\\TortoiseGit\\TortoiseProc\\ResizableState\\CommitDlgSizer"));
-	RECT rcDlg, rcLogMsg, rcFileList;
-	GetClientRect(&rcDlg);
-	m_cLogMessage.GetWindowRect(&rcLogMsg);
-	ScreenToClient(&rcLogMsg);
-	m_ListCtrl.GetWindowRect(&rcFileList);
-	ScreenToClient(&rcFileList);
-	if (yPos)
+	if (m_cLogMessage && m_ListCtrl && m_wndSplitter)
 	{
-		RECT rectSplitter;
-		m_wndSplitter.GetWindowRect(&rectSplitter);
-		ScreenToClient(&rectSplitter);
-		const int delta = yPos - rectSplitter.top;
-		if ((rcLogMsg.bottom + delta > rcLogMsg.top) && (rcLogMsg.bottom + delta < rcFileList.bottom - CDPIAware::Instance().ScaleY(GetSafeHwnd(), 30)))
+		DWORD yPos = CDPIAware::Instance().ScaleY(GetSafeHwnd(), CRegDWORD(L"Software\\TortoiseGit\\TortoiseProc\\ResizableState\\CommitDlgSizer"));
+		RECT rcDlg, rcLogMsg, rcFileList;
+		GetClientRect(&rcDlg);
+		m_cLogMessage.GetWindowRect(&rcLogMsg);
+		ScreenToClient(&rcLogMsg);
+		m_ListCtrl.GetWindowRect(&rcFileList);
+		ScreenToClient(&rcFileList);
+		if (yPos)
 		{
-			m_wndSplitter.SetWindowPos(nullptr, rectSplitter.left, yPos, 0, 0, SWP_NOSIZE);
-			DoSize(delta);
-			Invalidate();
+			RECT rectSplitter;
+			m_wndSplitter.GetWindowRect(&rectSplitter);
+			ScreenToClient(&rectSplitter);
+			const int delta = yPos - rectSplitter.top;
+			if ((rcLogMsg.bottom + delta > rcLogMsg.top) && (rcLogMsg.bottom + delta < rcFileList.bottom - CDPIAware::Instance().ScaleY(GetSafeHwnd(), 30)))
+			{
+				m_wndSplitter.SetWindowPos(nullptr, rectSplitter.left, yPos, 0, 0, SWP_NOSIZE);
+				DoSize(delta);
+				Invalidate();
+			}
 		}
 	}
 
@@ -1302,7 +1400,7 @@ void CCommitDlg::PrepareIndexForCommitWithoutStagingSupport(int nListItems, bool
 
 void CCommitDlg::SaveSplitterPos()
 {
-	if (!IsIconic())
+	if (!IsIconic() && m_wndSplitter)
 	{
 		CRegDWORD regPos(L"Software\\TortoiseGit\\TortoiseProc\\ResizableState\\CommitDlgSizer");
 		RECT rectSplitter;
@@ -1341,7 +1439,9 @@ UINT CCommitDlg::StatusThread()
 	DialogEnableWindow(IDC_COMMIT_AMEND, FALSE);
 	DialogEnableWindow(IDC_COMMIT_AMENDDIFF, FALSE);
 	DialogEnableWindow(IDC_STAGINGSUPPORT, false);
-	GetDlgItem(IDC_COMMIT_AUTHORDATA)->SendMessage(EM_SETREADONLY, TRUE);
+
+	if (auto pAuthorData = GetDlgItem(IDC_COMMIT_AUTHORDATA))
+		pAuthorData->SendMessage(EM_SETREADONLY, TRUE);
 	// read the list of recent log entries before querying the WC for status
 	// -> the user may select one and modify / update it while we are crawling the WC
 
@@ -1429,7 +1529,8 @@ UINT CCommitDlg::StatusThread()
 		}
 	}
 
-	GetDlgItem(IDC_MERGEACTIVE)->ShowWindow(repoRoot.IsMergeActive() ? SW_SHOW : SW_HIDE);
+	if (auto pMergeActive = GetDlgItem(IDC_MERGEACTIVE))
+		pMergeActive->ShowWindow(repoRoot.IsMergeActive() ? SW_SHOW : SW_HIDE);
 
 	SetDlgTitle();
 
@@ -1466,8 +1567,8 @@ UINT CCommitDlg::StatusThread()
 				m_bCommitAmend = TRUE;
 				SendMessage(WM_UPDATEDATAFALSE);
 			}
-			else
-				GetDlgItem(IDC_COMMIT_AMEND)->EnableWindow(!repoRoot.IsCherryPickActive());
+			else if (auto pAmend = GetDlgItem(IDC_COMMIT_AMEND))
+				pAmend->EnableWindow(!repoRoot.IsCherryPickActive());
 
 			CGitHash hash;
 			if (g_Git.GetHash(hash, L"HEAD"))
@@ -1485,13 +1586,14 @@ UINT CCommitDlg::StatusThread()
 					m_bAmendDiffToLastCommit = TRUE;
 					SendMessage(WM_UPDATEDATAFALSE);
 				}
-				else
-					GetDlgItem(IDC_COMMIT_AMENDDIFF)->EnableWindow(TRUE);
+				else if (auto pAmendDiff = GetDlgItem(IDC_COMMIT_AMENDDIFF))
+					pAmendDiff->EnableWindow(TRUE);
 			}
 		}
 
 		if (m_bSetAuthor)
-			GetDlgItem(IDC_COMMIT_AUTHORDATA)->SendMessage(EM_SETREADONLY, FALSE);
+			if (auto pAuthorData = GetDlgItem(IDC_COMMIT_AUTHORDATA))
+				pAuthorData->SendMessage(EM_SETREADONLY, FALSE);
 		else
 		{
 			m_sAuthor.Format(L"%s <%s>", static_cast<LPCWSTR>(g_Git.GetUserName()), static_cast<LPCWSTR>(g_Git.GetUserEmail()));
@@ -1539,7 +1641,8 @@ void CCommitDlg::SetDlgTitle()
 void CCommitDlg::OnCancel()
 {
 	UpdateData();
-	m_sLogMessage = m_cLogMessage.GetText();
+	if (m_cLogMessage)
+		m_sLogMessage = m_cLogMessage.GetText();
 	UpdateLogMsgByBugId(false);
 
 	bool hasChangedMessage;
