@@ -305,6 +305,12 @@ bool DstWorktreeCommand::Execute()
 				return false;
 			}
 
+			if (fs::is_directory((LPCWSTR)main_worktree))
+			{
+				MessageBox(*pExplorerWnd, L"Cannot remove main worktree", L"TortoiseGit", MB_ICONERROR);
+				return false;
+			}
+
 			CString branch_name;
 			g_Git.Run(L"git rev-parse --abbrev-ref HEAD", &branch_name, CP_UTF8);
 			branch_name.Trim();
