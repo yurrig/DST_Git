@@ -307,6 +307,10 @@ UINT CProgressDlg::RunCmdList(CWnd* pWnd, STRING_VECTOR& cmdlist, STRING_VECTOR&
 			return TGIT_GIT_ERROR_GET_EXIT_CODE;
 		}
 		CTraceToOutputDebugString::Instance()(_T(__FUNCTION__) L": process %s finished with code %d\n", static_cast<LPCWSTR>(cmdlist[i]), status);
+		if (cmdlist[i].Find(_T("robocopy")) == 0)
+			// robocopy is a special case, it returns 1 if it has copied files, but no errors occurred
+			if (status < 8)
+				status = 0;
 		ret |= status;
 	}
 

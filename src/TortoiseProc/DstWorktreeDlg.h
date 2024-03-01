@@ -55,6 +55,7 @@ public:
 	BOOL DeleteBranch() const { return m_bDeleteBranch; }
 
 	afx_msg LRESULT OnUpdateOKButton(WPARAM, LPARAM);
+	afx_msg void OnBnClickedExplore();
 
 	DECLARE_MESSAGE_MAP()
 };

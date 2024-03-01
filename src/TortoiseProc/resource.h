@@ -363,6 +363,7 @@
 #define IDS_REG_ERROR                   1110
 #define IDC_PROGRESS                    1111
 #define IDS_PROC_COMBINE_ERRORRESETHEAD 1111
+#define IDC_STATIC_BRANCH_NAME          1111
 #define IDC_YOURVERSION                 1112
 #define IDS_PROC_DELETENREFS            1112
 #define IDC_CURRENTVERSION              1113
@@ -1682,8 +1683,11 @@
 #define IDC_EDIT_WORKTREEPATH           1862
 #define IDC_EDIT_BRANCHNAME             1863
 #define IDC_BTN_WORKTREEPATH_BROWSE     1864
-#define IDC_BRANCH_NAME                 1865
-#define IDC_EDIT1                       1866
+#define IDC_EDIT_BRANCH_NAME            1865
+#define IDC_BUTTON_EXPLORE              1867
+#define IDC_STATIC_WORKTREE_PATH        1868
+#define IDC_EDIT_WORKTREE_PATH          1869
+#define IDC_STATIC_DIRINUSE             1870
 #define IDS_LOG_REVERTTOREV_CONFIRM     1890
 #define IDS_LOG_REVERTREV_ERROR         1891
 #define IDS_LOG_STOPONCOPY_HINT         1892
@@ -2154,7 +2158,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        375
 #define _APS_NEXT_COMMAND_VALUE         32881
-#define _APS_NEXT_CONTROL_VALUE         1867
+#define _APS_NEXT_CONTROL_VALUE         1871
 #define _APS_NEXT_SYMED_VALUE           201
 #endif
 #endif

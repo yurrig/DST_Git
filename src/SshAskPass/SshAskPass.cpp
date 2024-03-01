@@ -89,7 +89,7 @@ int APIENTRY _tWinMain(HINSTANCE	/*hInstance*/,
 
 	if (StrStrI(lpCmdLine, L"Should I try again?"))
 	{
-		if (CTaskDialog::IsSupported())
+		if (0 /*CTaskDialog::IsSupported()*/)
 		{
 			if (CTaskDialog::ShowDialog(g_Prompt, L"", L"TortoiseGit - Git CLI yes/no wrapper", TDCBF_NO_BUTTON | TDCBF_YES_BUTTON, TDF_USE_COMMAND_LINKS | TDF_POSITION_RELATIVE_TO_WINDOW) == IDYES)
 				return 0;

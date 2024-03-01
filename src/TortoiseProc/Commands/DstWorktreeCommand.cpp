@@ -309,16 +309,17 @@ bool DstWorktreeCommand::Execute()
 			g_Git.Run(L"git rev-parse --abbrev-ref HEAD", &branch_name, CP_UTF8);
 			branch_name.Trim();
 
+			fs::current_path(fs::path((LPCWSTR)main_worktree).parent_path());
+
 			DstDropWorktreeDlg dlg(pExplorerWnd);
 			//dlg.m_pathList.AddPath(CString(path.c_str()));
 			if (dlg.DoModal() == IDCANCEL)
 				return false;
 
-			fs::current_path(fs::path((LPCWSTR)main_worktree).parent_path());
 			g_Git.m_CurrentDir = (fs::current_path() / "").c_str();
 
 			CProgressDlg progress(nullptr);
-			progress.m_GitCmdList.push_back((L"git worktree remove " + path.wstring()).c_str());
+			progress.m_GitCmdList.push_back((L"git worktree remove -f " + path.wstring()).c_str());
 
 			if (dlg.DeleteBranch())
 				progress.m_GitCmdList.push_back(L"git branch -d " + branch_name);
@@ -420,26 +421,8 @@ bool DstWorktreeCommand::Execute()
 		});
 	};
 
-	auto copy_vs_context = [&](const std::wstring& product) {
-		try
-		{
-			for (auto& e : fs::recursive_directory_iterator(fs::path(product) / ".vs"))
-			{
-				auto src = e.path();
-				if (src.filename() != ".suo")
-					continue;
-				auto dst = worktree_path / src;
-				auto cmd = "cmd /c xcopy /h /-i " + src.string() + " " + dst.string();
-				progress.m_GitCmdList.push_back(CUnicodeUtils::GetUnicode(cmd.c_str()));
-			}
-		}
-		catch (...)
-		{
-		}
-	};
-
-	copy_vs_context(L"cam350");
-	copy_vs_context(L"blueprint");
+	auto cmd = "robocopy /s /np /ndl /njh /njs . " + worktree_path.string() + " .suo";
+	progress.m_GitCmdList.push_back(CUnicodeUtils::GetUnicode(cmd.c_str()));
 
 	[[maybe_unused]] auto rc = progress.DoModal();
 

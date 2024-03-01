@@ -41,6 +41,9 @@
 #include "FileTextLines.h"
 #include "DPIAware.h"
 
+#include <filesystem>
+namespace fs = std::filesystem;
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #undef THIS_FILE
@@ -1455,6 +1458,8 @@ UINT CCommitDlg::StatusThread()
 	DialogEnableWindow(IDC_CHECKFILES, false);
 	DialogEnableWindow(IDC_CHECKSUBMODULES, false);
 
+	fs::path current_path = fs::current_path();
+
 	g_Git.RefreshGitIndex();
 
 	CTGitPath repoRoot { g_Git.m_CurrentDir };
@@ -1619,6 +1624,8 @@ UINT CCommitDlg::StatusThread()
 	InterlockedExchange(&m_bThreadRunning, FALSE);
 	// force the cursor to normal
 	RefreshCursor();
+
+	fs::current_path(current_path);
 
 	return 0;
 }
@@ -2901,7 +2908,8 @@ void CCommitDlg::OnScnUpdateUI(NMHDR * /*pNMHDR*/, LRESULT *pResult)
 
 	CString str;
 	str.Format(L"%d/%d", line + 1, column + 1);
-	this->GetDlgItem(IDC_TEXT_INFO)->SetWindowText(str);
+	if (auto pTextInfo = GetDlgItem(IDC_TEXT_INFO))
+		pTextInfo->SetWindowText(str);
 
 	if(*pResult)
 		*pResult=0;

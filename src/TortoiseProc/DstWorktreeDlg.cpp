@@ -4,11 +4,15 @@
 #include "stdafx.h"
 #include "afxdialogex.h"
 
+#include "Git.h"
 #include "AppUtils.h"
 #include "UnicodeUtils.h"
 #include "GitStatusListCtrl.h"
 
 #include "DSTWorktreeDlg.h"
+
+#include <filesystem>
+namespace fs = std::filesystem;
 
 namespace dst
 {
@@ -114,7 +118,7 @@ bool DstDropWorktreeDlg::RunStartCommitHook()
 BOOL DstDropWorktreeDlg::OnInitDialog()
 {
 	CRect rcWorktreePath;
-	auto pedtWorktreePath = (CEdit*)GetDlgItem(IDC_EDIT_WORKTREEPATH);
+	auto pedtWorktreePath = (CEdit*)GetDlgItem(IDC_EDIT_WORKTREE_PATH);
 	pedtWorktreePath->GetWindowRect(&rcWorktreePath);
 	ScreenToClient(&rcWorktreePath);
 
@@ -134,12 +138,14 @@ BOOL DstDropWorktreeDlg::OnInitDialog()
 		AddAnchor(*pDeleteBranch, TOP_LEFT);
 		pDeleteBranch->SetCheck(m_bDeleteBranch ? BST_CHECKED : BST_UNCHECKED);
 	}
-	if (auto pBranchName = (CEdit*)GetDlgItem(IDC_BRANCH_NAME))
+	if (auto pBranchName = (CEdit*)GetDlgItem(IDC_EDIT_BRANCH_NAME))
 	{
 		pBranchName->SetWindowText(g_Git.GetCurrentBranch());
 	}
 
-	AddAnchor(IDC_EDIT_WORKTREEPATH, TOP_LEFT, TOP_LEFT);
+	AddAnchor(IDC_EDIT_WORKTREE_PATH, TOP_LEFT, TOP_RIGHT);
+	AddAnchor(IDC_BUTTON_EXPLORE, TOP_RIGHT, TOP_RIGHT);
+	AddAnchor(IDC_EDIT_BRANCH_NAME, TOP_LEFT, TOP_RIGHT);
 
 	return TRUE;
 }
@@ -162,6 +168,16 @@ afx_msg LRESULT DstDropWorktreeDlg::OnUpdateOKButton(WPARAM, LPARAM)
 	return 0;
 }
 
+afx_msg void DstDropWorktreeDlg::OnBnClickedExplore()
+{
+	if (auto pidl = ILCreateFromPath(g_Git.m_CurrentDir))
+	{
+		SHOpenFolderAndSelectItems(pidl, 0, 0, 0);
+		ILFree(pidl);
+	}
+}
+
 BEGIN_MESSAGE_MAP(DstDropWorktreeDlg, CCommitDlg)
 	ON_REGISTERED_MESSAGE(WM_UPDATEOKBUTTON, OnUpdateOKButton)
+	ON_BN_CLICKED(IDC_BUTTON_EXPLORE, OnBnClickedExplore)
 END_MESSAGE_MAP()
