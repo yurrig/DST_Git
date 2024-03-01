@@ -309,17 +309,17 @@ bool DstWorktreeCommand::Execute()
 			g_Git.Run(L"git rev-parse --abbrev-ref HEAD", &branch_name, CP_UTF8);
 			branch_name.Trim();
 
-			fs::current_path(fs::path((LPCWSTR)main_worktree).parent_path());
-
 			DstDropWorktreeDlg dlg(pExplorerWnd);
 			//dlg.m_pathList.AddPath(CString(path.c_str()));
 			if (dlg.DoModal() == IDCANCEL)
 				return false;
 
+			fs::current_path(fs::path((LPCWSTR)main_worktree));
 			g_Git.m_CurrentDir = (fs::current_path() / "").c_str();
 
 			CProgressDlg progress(nullptr);
-			progress.m_GitCmdList.push_back((L"git worktree remove -f " + path.wstring()).c_str());
+			progress.m_GitCmdList.push_back((L"cmd /c rmdir /s /q " + path.wstring()).c_str());
+			progress.m_GitCmdList.push_back(L"git worktree prune -v");
 
 			if (dlg.DeleteBranch())
 				progress.m_GitCmdList.push_back(L"git branch -d " + branch_name);

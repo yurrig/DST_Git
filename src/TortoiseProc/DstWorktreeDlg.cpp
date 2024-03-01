@@ -147,6 +147,10 @@ BOOL DstDropWorktreeDlg::OnInitDialog()
 	AddAnchor(IDC_BUTTON_EXPLORE, TOP_RIGHT, TOP_RIGHT);
 	AddAnchor(IDC_EDIT_BRANCH_NAME, TOP_LEFT, TOP_RIGHT);
 
+	DialogEnableWindow(IDOK, FALSE);
+
+	SetTimer(1, 100, nullptr);
+
 	return TRUE;
 }
 
@@ -177,7 +181,22 @@ afx_msg void DstDropWorktreeDlg::OnBnClickedExplore()
 	}
 }
 
+afx_msg LRESULT DstDropWorktreeDlg::OnAutoListReady(WPARAM wp, LPARAM lp)
+{
+	auto count = m_ListCtrl.GetItemCount();
+	DialogEnableWindow(IDOK, !count);
+	return CCommitDlg::OnAutoListReady(wp, lp);
+}
+
+afx_msg void DstDropWorktreeDlg::OnTimer(UINT_PTR)
+{
+	auto count = m_ListCtrl.GetItemCount();
+	DialogEnableWindow(IDOK, !count);
+}
+
 BEGIN_MESSAGE_MAP(DstDropWorktreeDlg, CCommitDlg)
+	ON_WM_TIMER()
 	ON_REGISTERED_MESSAGE(WM_UPDATEOKBUTTON, OnUpdateOKButton)
+	ON_REGISTERED_MESSAGE(WM_AUTOLISTREADY, OnAutoListReady)
 	ON_BN_CLICKED(IDC_BUTTON_EXPLORE, OnBnClickedExplore)
 END_MESSAGE_MAP()

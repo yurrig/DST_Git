@@ -51,10 +51,12 @@ public:
 	void OnOK() override;
 
 	void PrepareOkButton() override;
-
 	BOOL DeleteBranch() const { return m_bDeleteBranch; }
 
+protected:
+	afx_msg void OnTimer(UINT_PTR);
 	afx_msg LRESULT OnUpdateOKButton(WPARAM, LPARAM);
+	afx_msg LRESULT OnAutoListReady(WPARAM, LPARAM);
 	afx_msg void OnBnClickedExplore();
 
 	DECLARE_MESSAGE_MAP()

@@ -2441,7 +2441,7 @@ BEGIN
     LTEXT           "Branch name:",IDC_STATIC_BRANCH_NAME,10,25,42,8
     EDITTEXT        IDC_EDIT_BRANCH_NAME,63,24,289,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER,WS_EX_STATICEDGE
     CONTROL         "Delete branch",IDC_DELETEBRANCH,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,64,38,52,10
-    GROUPBOX        "Uncommitted changes (F5: refresh, double-click on file for diff):",IDC_LISTGROUP,6,51,346,126
+    GROUPBOX        "Uncommitted changes blocking worktree removal (F5: refresh, double-click on file for diff):",IDC_LISTGROUP,6,51,346,126
     LTEXT           "Check:",IDC_SELECTLABEL,14,61,41,8
     LTEXT           "&All",IDC_CHECKALL,55,61,14,8
     LTEXT           "&None",IDC_CHECKNONE,72,61,18,8
@@ -2452,8 +2452,7 @@ BEGIN
     LTEXT           "Modified",IDC_CHECKMODIFIED,229,61,28,8
     LTEXT           "Files",IDC_CHECKFILES,264,61,15,8
     LTEXT           "Submodules",IDC_CHECKSUBMODULES,285,61,47,8
-    CONTROL         "",IDC_FILELIST,"SysListView32",LVS_REPORT | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,14,73,330,86
-    CONTROL         "Show &Unversioned Files",IDC_SHOWUNVERSIONED,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,14,163,135,10
+    CONTROL         "",IDC_FILELIST,"SysListView32",LVS_REPORT | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,14,73,330,97
 END
 
 
