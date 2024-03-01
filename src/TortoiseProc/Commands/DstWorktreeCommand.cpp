@@ -329,7 +329,7 @@ bool DstWorktreeCommand::Execute()
 				return false;
 			}
 
-			if (fs::is_directory((LPCWSTR)main_worktree))
+			if (fs::is_directory(path / ".git"))
 			{
 				MessageBox(*pExplorerWnd, L"Cannot remove main worktree", L"TortoiseGit", MB_ICONERROR);
 				return false;
