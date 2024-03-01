@@ -248,6 +248,20 @@ std::string WorkTreeDirName(const std::string& branch_name)
 	return dir_name;
 }
 
+std::string GetCredentials()
+{
+	CInputDlg dlg;
+	dlg.m_sTitle = _T("Credentials");
+	dlg.m_sHintText = _T("Personal Access Token:");
+	std::string token;
+	if (dlg.DoModal() == IDOK)
+	{
+		token = CUnicodeUtils::GetUTF8(dlg.m_sInputText);
+		/*BOOL rc = */ dst::StoreAccessToken((LPBYTE)token.c_str(), token.size());
+	}
+	return token;
+}
+
 } // namespace dst
 
 bool DstWorktreeCommand::Execute()
@@ -255,13 +269,9 @@ bool DstWorktreeCommand::Execute()
 	auto token = dst::ReadAccessToken();
 	if (token.empty())
 	{
-		CInputDlg dlg;
-		dlg.m_sTitle = _T("Credentials");
-		dlg.m_sHintText = _T("Personal Access Token:");
-		if (dlg.DoModal() != IDOK)
+		token = dst::GetCredentials().c_str();
+		if (token.empty())
 			return false;
-		token = CUnicodeUtils::GetUTF8(dlg.m_sInputText);
-		/*BOOL rc = */dst::StoreAccessToken((LPBYTE)token.c_str(), token.size() * sizeof(wchar_t));
 	}
 
 	dst::BranchDesc desc;

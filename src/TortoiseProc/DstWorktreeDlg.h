@@ -28,6 +28,7 @@ protected:
 	DECLARE_MESSAGE_MAP()
 
 	void Update();
+	void OnCredentials();
 
 public:
 	CString m_main_repo_path;

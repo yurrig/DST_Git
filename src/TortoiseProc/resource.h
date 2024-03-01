@@ -1688,6 +1688,8 @@
 #define IDC_STATIC_WORKTREE_PATH        1868
 #define IDC_EDIT_WORKTREE_PATH          1869
 #define IDC_STATIC_DIRINUSE             1870
+#define IDC_BUTTON1                     1871
+#define IDC_BUTTON_CREDENTIALS          1871
 #define IDS_LOG_REVERTTOREV_CONFIRM     1890
 #define IDS_LOG_REVERTREV_ERROR         1891
 #define IDS_LOG_STOPONCOPY_HINT         1892
@@ -2158,7 +2160,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        375
 #define _APS_NEXT_COMMAND_VALUE         32881
-#define _APS_NEXT_CONTROL_VALUE         1871
+#define _APS_NEXT_CONTROL_VALUE         1872
 #define _APS_NEXT_SYMED_VALUE           201
 #endif
 #endif

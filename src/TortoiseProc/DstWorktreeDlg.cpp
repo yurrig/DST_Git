@@ -18,6 +18,7 @@ namespace dst
 {
 
 std::string WorkTreeDirName(const std::string& branch_name);
+std::string GetCredentials();
 
 }
 
@@ -45,8 +46,13 @@ void DstAddWorktreeDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_EDIT_WORKTREEPATH, m_edtWorktreePath);
 }
 
+void DstAddWorktreeDlg::OnCredentials()
+{
+	dst::GetCredentials();
+}
 
 BEGIN_MESSAGE_MAP(DstAddWorktreeDlg, CResizableStandAloneDialog)
+	ON_BN_CLICKED(IDC_BUTTON_CREDENTIALS, &OnCredentials)
 	ON_EN_CHANGE(IDC_EDIT_BRANCHNAME, &DstAddWorktreeDlg::Update)
 END_MESSAGE_MAP()
 
