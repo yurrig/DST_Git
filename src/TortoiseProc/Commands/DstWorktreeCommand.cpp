@@ -225,6 +225,20 @@ BranchDesc BranchDescFromUrl(const std::string& url, const std::string& Pat)
 	return {};
 }
 
+BranchDesc BranchDescFromClipboard()
+{
+	dst::BranchDesc desc;
+	auto clip_text = dst::GetClipText();
+	std::string key = dst::UrlPrefix + dst::OrganizationName + "/" + dst::ProjectName + "/";
+	auto pos = clip_text.find(key);
+	if (pos == 0)
+	{
+		auto token = dst::ReadAccessToken();
+		desc = dst::BranchDescFromUrl(clip_text, token);
+	}
+	return desc;
+}
+
 std::string WorkTreeDirName(const std::string& branch_name)
 {
 	// need to limit output paths, as there may be very deep directories
@@ -246,6 +260,12 @@ std::string WorkTreeDirName(const std::string& branch_name)
 	ReplaceAll(dir_name, "/", "_");
 
 	return dir_name;
+}
+
+void ImportClipboard(::DstAddWorktreeDlg *pDlg)
+{
+	BranchDesc desc = BranchDescFromClipboard();
+	pDlg->m_strBranchName = desc.path.c_str();
 }
 
 std::string GetCredentials()
@@ -279,13 +299,7 @@ bool DstWorktreeCommand::Execute()
 		desc.path = CUnicodeUtils::GetUTF8(parser.GetVal(L"branch"));
 
 	if (desc.path.empty())
-	{
-		auto clip_text = dst::GetClipText();
-		std::string key = dst::UrlPrefix + dst::OrganizationName + "/" + dst::ProjectName + "/";
-		auto pos = clip_text.find(key);
-		if (pos == 0)
-			desc = dst::BranchDescFromUrl(clip_text, token);
-	}
+		desc = dst::BranchDescFromClipboard();
 
 	auto current_path = fs::current_path();
 

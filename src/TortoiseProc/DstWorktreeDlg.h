@@ -27,8 +27,9 @@ protected:
 
 	DECLARE_MESSAGE_MAP()
 
-	void Update();
-	void OnCredentials();
+	afx_msg void Update();
+	afx_msg void OnCredentials();
+	afx_msg void OnImportClipboard();
 
 public:
 	CString m_main_repo_path;

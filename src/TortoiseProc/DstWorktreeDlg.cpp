@@ -19,6 +19,7 @@ namespace dst
 
 std::string WorkTreeDirName(const std::string& branch_name);
 std::string GetCredentials();
+void ImportClipboard(::DstAddWorktreeDlg *pDlg);
 
 }
 
@@ -46,14 +47,22 @@ void DstAddWorktreeDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_EDIT_WORKTREEPATH, m_edtWorktreePath);
 }
 
-void DstAddWorktreeDlg::OnCredentials()
+afx_msg void DstAddWorktreeDlg::OnCredentials()
 {
 	dst::GetCredentials();
 }
 
+afx_msg void DstAddWorktreeDlg::OnImportClipboard()
+{
+	dst::ImportClipboard(this);
+	m_edtBranchName.SetText(m_strBranchName);
+	Update();
+}
+
 BEGIN_MESSAGE_MAP(DstAddWorktreeDlg, CResizableStandAloneDialog)
 	ON_BN_CLICKED(IDC_BUTTON_CREDENTIALS, &OnCredentials)
-	ON_EN_CHANGE(IDC_EDIT_BRANCHNAME, &DstAddWorktreeDlg::Update)
+	ON_BN_CLICKED(IDC_BUTTON_CLIPBOARD, &OnImportClipboard)
+	ON_EN_CHANGE(IDC_EDIT_BRANCHNAME, &Update)
 END_MESSAGE_MAP()
 
 
@@ -95,7 +104,7 @@ BOOL DstAddWorktreeDlg::OnInitDialog()
 	// EXCEPTION: OCX Property Pages should return FALSE
 }
 
-void DstAddWorktreeDlg::Update()
+afx_msg void DstAddWorktreeDlg::Update()
 {
 	m_strBranchName = m_edtBranchName.GetText();
 	m_strBranchName.Trim();
