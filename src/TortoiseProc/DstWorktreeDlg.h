@@ -6,6 +6,21 @@
 #include "StandAloneDlg.h"
 #include "SciEdit.h"
 
+namespace dst
+{
+	struct BranchDesc
+	{
+		enum Type
+		{
+			Branch,
+			PR,
+			Defect
+		} type = Branch;
+
+		CString name, title, id, product, main_repo_path;
+	};
+}
+
 
 // DSTAddWorktreeDlg dialog
 
@@ -32,8 +47,7 @@ protected:
 	afx_msg void OnImportClipboard();
 
 public:
-	CString m_main_repo_path;
-	CString m_strBranchName;
+	dst::BranchDesc m_branch_desc;
 	CString m_strWorktreePath;
 	virtual BOOL OnInitDialog();
 	CSciEdit m_edtBranchName;

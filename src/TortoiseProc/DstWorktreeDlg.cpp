@@ -17,7 +17,7 @@ namespace fs = std::filesystem;
 namespace dst
 {
 
-std::string WorkTreeDirName(const std::string& branch_name);
+CString WorkTreeDirName(const BranchDesc& branch_desc);
 std::string GetCredentials();
 void ImportClipboard(::DstAddWorktreeDlg *pDlg);
 
@@ -29,8 +29,6 @@ IMPLEMENT_DYNAMIC(DstAddWorktreeDlg, CResizableStandAloneDialog)
 
 DstAddWorktreeDlg::DstAddWorktreeDlg(CWnd* pParent /*=nullptr*/)
 	: CResizableStandAloneDialog(IDD_DST_ADDWORKTREE, pParent)
-	, m_strBranchName(_T(""))
-	, m_strWorktreePath(_T(""))
 {
 }
 
@@ -41,7 +39,7 @@ DstAddWorktreeDlg::~DstAddWorktreeDlg()
 void DstAddWorktreeDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CResizableStandAloneDialog::DoDataExchange(pDX);
-	DDX_Text(pDX, IDC_EDIT_BRANCHNAME, m_strBranchName);
+	DDX_Text(pDX, IDC_EDIT_BRANCHNAME, m_branch_desc.name);
 	DDX_Text(pDX, IDC_EDIT_WORKTREEPATH, m_strWorktreePath);
 	DDX_Control(pDX, IDC_EDIT_BRANCHNAME, m_edtBranchName);
 	DDX_Control(pDX, IDC_EDIT_WORKTREEPATH, m_edtWorktreePath);
@@ -55,7 +53,7 @@ afx_msg void DstAddWorktreeDlg::OnCredentials()
 afx_msg void DstAddWorktreeDlg::OnImportClipboard()
 {
 	dst::ImportClipboard(this);
-	m_edtBranchName.SetText(m_strBranchName);
+	m_edtBranchName.SetText(m_branch_desc.name);
 	Update();
 }
 
@@ -78,9 +76,9 @@ BOOL DstAddWorktreeDlg::OnInitDialog()
 	m_edtWorktreePath.Init(-1);
 	m_edtWorktreePath.SetFont(L"Segoe UI", 9);
 
-	if (!m_strBranchName.IsEmpty())
+	if (!m_branch_desc.name.IsEmpty())
 	{
-		m_edtBranchName.SetText(m_strBranchName);
+		m_edtBranchName.SetText(m_branch_desc.name);
 		m_edtBranchName.Call(SCI_EMPTYUNDOBUFFER);
 	}
 	AddAnchor(IDC_EDIT_BRANCHNAME, TOP_LEFT, TOP_RIGHT);
@@ -106,13 +104,12 @@ BOOL DstAddWorktreeDlg::OnInitDialog()
 
 afx_msg void DstAddWorktreeDlg::Update()
 {
-	m_strBranchName = m_edtBranchName.GetText();
-	m_strBranchName.Trim();
-	auto utf8_branch_name = CUnicodeUtils::GetUTF8(m_main_repo_path + "-" + m_strBranchName);
-	auto dir_name = dst::WorkTreeDirName((LPCSTR)utf8_branch_name);
-	m_strWorktreePath = CString(dir_name.c_str());
+	auto strBranchName = m_edtBranchName.GetText().Trim();
+	if (!strBranchName.IsEmpty())
+		m_branch_desc.name = strBranchName;
+	m_strWorktreePath = dst::WorkTreeDirName(m_branch_desc);
 	m_edtWorktreePath.SetText(m_strWorktreePath);
-	GetDlgItem(IDOK)->EnableWindow(!m_strBranchName.IsEmpty());
+	GetDlgItem(IDOK)->EnableWindow(!m_branch_desc.name.IsEmpty());
 }
 
 DstDropWorktreeDlg::DstDropWorktreeDlg(CWnd* pParent)

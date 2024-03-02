@@ -170,21 +170,25 @@ std::string GetClipText()
 	return text;
 }
 
-struct BranchDesc
-{
-	enum Type
-	{
-		Branch,
-		PR,
-		Defect
-	} type = Branch;
-
-	std::string path, id, product;
-};
-
 BranchDesc BranchDescFromUrl(const std::string& url, const std::string& Pat)
 {
 	std::string responce = InvokeRestMethod(url, Pat);
+
+	auto to_cstring = [](const std::string& str) -> CString {
+		return CUnicodeUtils::GetUnicode(str.c_str());
+	};
+	auto remove_bad_chars = [&](const CString& str) -> CString {
+		std::wstring retval;
+		for (int i = 0; i < str.GetLength(); ++i)
+		{
+			auto c = str[i];
+			if (iswalnum(c))
+				retval += towlower(c);
+			else if (retval.back() != L'_')
+				retval += L'_';
+		}
+		return retval.c_str();
+	};
 
 	std::regex re_defect("<title>(.+) ([0-9]+): (.+)</title>");
 	std::match_results<std::string::const_iterator> match_defect;
@@ -197,11 +201,14 @@ BranchDesc BranchDescFromUrl(const std::string& url, const std::string& Pat)
 			product = "blueprint";
 		if (!product.empty())
 		{
-			std::string branch_name = "bugfix/" + product + "/" + id + " " + title;
-			ReplaceAll(branch_name, " ", "_");
-			ReplaceAll(branch_name, "_-_", "_");
-			ReplaceAll(branch_name, "=", "_");
-			return { BranchDesc::Defect, branch_name, id, product };
+			CString branch_name = L"bugfix/" + to_cstring(product) + L"/" + to_cstring(id) + L" " + to_cstring(title);
+			return {
+				BranchDesc::Defect,
+				remove_bad_chars(branch_name),
+				remove_bad_chars(to_cstring(title)),
+				to_cstring(id),
+				to_cstring(product)
+			};
 		}
 	}
 
@@ -217,7 +224,17 @@ BranchDesc BranchDescFromUrl(const std::string& url, const std::string& Pat)
 			if (std::regex_search(responce, match_branch, re_branch))
 			{
 				std::string branch_name = match_branch[1];
-				return { BranchDesc::PR, branch_name, id };
+				std::regex re_title("\"title\":\"(.*?)\"");
+				if (std::regex_search(responce, match_branch, re_title))
+				{
+					std::string title = match_branch[1];
+					return {
+						BranchDesc::PR,
+						to_cstring(branch_name),
+						remove_bad_chars(to_cstring(title)),
+						to_cstring(id)
+					};
+				};
 			}
 		}
 	}
@@ -239,7 +256,7 @@ BranchDesc BranchDescFromClipboard()
 	return desc;
 }
 
-std::string WorkTreeDirName(const std::string& branch_name)
+CString WorkTreeDirName(const BranchDesc& branch_desc)
 {
 	// need to limit output paths, as there may be very deep directories
 
@@ -255,17 +272,21 @@ std::string WorkTreeDirName(const std::string& branch_name)
 	}
 
 	int max_dirname_len = MAX_PATH - maxlen;
-	std::string dir_name = branch_name.substr(0, max_dirname_len - 2);
+	auto branch_name = branch_desc.main_repo_path;
+	if (branch_desc.type == BranchDesc::PR)
+		branch_name += L"-PR_" + CString(branch_desc.id) + L"_" + branch_desc.title;
+	else if (branch_desc.type == BranchDesc::Defect)
+		branch_name += L"-" + branch_desc.name;
+	CString dir_name = branch_name.Left(max_dirname_len - 2);
 
-	ReplaceAll(dir_name, "/", "_");
+	dir_name.Replace(L'/', L'_');
 
 	return dir_name;
 }
 
 void ImportClipboard(::DstAddWorktreeDlg *pDlg)
 {
-	BranchDesc desc = BranchDescFromClipboard();
-	pDlg->m_strBranchName = desc.path.c_str();
+	pDlg->m_branch_desc = BranchDescFromClipboard();
 }
 
 std::string GetCredentials()
@@ -296,14 +317,15 @@ bool DstWorktreeCommand::Execute()
 
 	dst::BranchDesc desc;
 	if (parser.HasKey(L"branch"))
-		desc.path = CUnicodeUtils::GetUTF8(parser.GetVal(L"branch"));
+		desc.name = CUnicodeUtils::GetUTF8(parser.GetVal(L"branch"));
 
-	if (desc.path.empty())
+	if (desc.name.IsEmpty())
 		desc = dst::BranchDescFromClipboard();
 
 	auto current_path = fs::current_path();
 
 	fs::path path = parser.GetVal(L"path");
+	desc.main_repo_path = path.c_str();
 
 	std::error_code ec;
 	if (!fs::exists(path, ec))
@@ -367,13 +389,12 @@ bool DstWorktreeCommand::Execute()
 	fs::path main_worktree_dir_name = path.filename();
 
 	DstAddWorktreeDlg dlg;
-	dlg.m_main_repo_path = path.c_str();
-	dlg.m_strBranchName = desc.path.c_str();
+	dlg.m_branch_desc = desc;
 
 	if (dlg.DoModal() == IDCANCEL)
 		return false;
 
-	desc.path = CUnicodeUtils::GetUTF8(dlg.m_strBranchName);
+	desc = dlg.m_branch_desc;
 	fs::path worktree_path = (LPCWSTR)dlg.m_strWorktreePath;
 
 	CString parent_branch;
@@ -415,28 +436,28 @@ bool DstWorktreeCommand::Execute()
 	progress.m_GitCmdList.push_back(L"git checkout " + parent_branch);
 	progress.m_GitCmdList.push_back(L"git pull");
 
-	auto branch_exists = [&](const std::string& branch) -> bool {
+	auto branch_exists = [&](const CString& branch) -> bool {
 		CString res;
-		CStringA cmd = ("git show-ref --verify " + branch).c_str();
-		return g_Git.Run(CUnicodeUtils::GetUnicode(cmd), &res, CP_UTF8) == 0;
+		CString cmd = L"git show-ref --verify " + branch;
+		return g_Git.Run(cmd, &res, CP_UTF8) == 0;
 	};
 
-	auto add_worktree = [&](const std::string& branch, bool create = false, bool track = false) {
-		std::string cmd = "git worktree add \"" + worktree_path.string() + "\" ";
+	auto add_worktree = [&](const CString& branch, bool create = false, bool track = false) {
+		CString cmd = (L"git worktree add \"" + worktree_path.wstring() + L"\" ").c_str();
 		if (create)
-			cmd += "-b ";
-		cmd += branch + " ";
+			cmd += L"-b ";
+		cmd += branch + L" ";
 		if (track)
-			cmd += "--track origin/" + branch + " ";
-		progress.m_GitCmdList.push_back(CUnicodeUtils::GetUnicode(cmd.c_str()));
+			cmd += L"--track origin/" + branch + L" ";
+		progress.m_GitCmdList.push_back(cmd);
 	};
 
-	if (branch_exists("refs/heads/" + desc.path))
-		add_worktree(desc.path);
-	else if (branch_exists("refs/remotes/origin/" + desc.path))
-		add_worktree(desc.path, true, true);
+	if (branch_exists(L"refs/heads/" + desc.name))
+		add_worktree(desc.name);
+	else if (branch_exists(L"refs/remotes/origin/" + desc.name))
+		add_worktree(desc.name, true, true);
 	else
-		add_worktree(desc.path, true);
+		add_worktree(desc.name, true);
 
 	 progress.m_PostCmdCallback = [&](DWORD status, PostCmdList& postCmdList) {
 		if (status)
