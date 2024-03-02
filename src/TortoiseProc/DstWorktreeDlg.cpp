@@ -97,6 +97,7 @@ BOOL DstAddWorktreeDlg::OnInitDialog()
 	AddAnchor(IDCANCEL, BOTTOM_RIGHT, BOTTOM_RIGHT);
 
 	Update();
+	m_edtBranchName.SetReadOnly(m_branch_desc.type == dst::BranchDesc::PR);
 
 	return TRUE; // return TRUE unless you set the focus to a control
 	// EXCEPTION: OCX Property Pages should return FALSE

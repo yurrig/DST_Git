@@ -286,7 +286,9 @@ CString WorkTreeDirName(const BranchDesc& branch_desc)
 
 void ImportClipboard(::DstAddWorktreeDlg *pDlg)
 {
+	auto main_worktree = pDlg->m_branch_desc.main_repo_path;
 	pDlg->m_branch_desc = BranchDescFromClipboard();
+	pDlg->m_branch_desc.main_repo_path = main_worktree;
 }
 
 std::string GetCredentials()
