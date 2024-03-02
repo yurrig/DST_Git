@@ -2328,6 +2328,13 @@
     <Image Include="..\Resources\cherry-pick.ico">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="..\tortoiseudiff\icon1.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\..\vs2022.png" />
+    <Image Include="..\..\..\vs2022.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Resources\download.avi">

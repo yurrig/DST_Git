@@ -27,70 +27,127 @@ LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
 IDI_PULL                ICON                    "..\\resources\\pull1.ico"
+
 IDI_APP                 ICON                    "..\\Resources\\Tortoise.ico"
-// for fetch use IDI_UPDATE
+
 IDI_UPDATE              ICON                    "..\\Resources\\menuupdate.ico"
+
 IDI_COMMIT              ICON                    "..\\Resources\\menucommit.ico"
+
 IDI_ADD                 ICON                    "..\\Resources\\menuadd.ico"
+
 IDI_REVERT              ICON                    "..\\Resources\\menurevert.ico"
+
 IDI_CLEANUP             ICON                    "..\\Resources\\menucleanup.ico"
+
 IDI_RESOLVE             ICON                    "..\\Resources\\menuresolve.ico"
+
 IDI_SWITCH              ICON                    "..\\Resources\\menuswitch.ico"
+
 IDI_MERGE               ICON                    "..\\Resources\\menumerge.ico"
+
 IDI_EXPORT              ICON                    "..\\Resources\\menuexport.ico"
+
 IDI_COPY                ICON                    "..\\Resources\\menucopy.ico"
+
 IDI_DELETE              ICON                    "..\\Resources\\menudelete.ico"
+
 IDI_RENAME              ICON                    "..\\Resources\\menurename.ico"
+
 IDI_DIFF                ICON                    "..\\Resources\\menucompare.ico"
+
 IDI_LOG                 ICON                    "..\\Resources\\menulog.ico"
+
 IDI_ABOUT               ICON                    "..\\Resources\\menuabout.ico"
+
 IDI_SETTINGS            ICON                    "..\\Resources\\menusettings.ico"
+
 IDI_CREATEREPOS         ICON                    "..\\Resources\\menucreaterepos.ico"
+
 IDI_CONFLICT            ICON                    "..\\Resources\\menuconflict.ico"
+
 IDI_RELOCATE            ICON                    "..\\Resources\\menurelocate.ico"
+
 IDI_HELP                ICON                    "..\\Resources\\menuhelp.ico"
+
 IDI_SHOWCHANGED         ICON                    "..\\Resources\\menushowchanged.ico"
+
 IDI_IGNORE              ICON                    "..\\Resources\\menuignore.ico"
+
 IDI_REPOBROWSE          ICON                    "..\\Resources\\menurepobrowse.ico"
+
 IDI_BLAME               ICON                    "..\\Resources\\TortoiseGitBlame.ico"
+
 IDI_PATCH               ICON                    "..\\Resources\\menupatch.ico"
+
 IDI_CREATEPATCH         ICON                    "..\\Resources\\menudiff.ico"
+
 IDI_MENUFILE            ICON                    "..\\Resources\\tsvnmenufile.ico"
+
 IDI_MENUFOLDER          ICON                    "..\\Resources\\tsvnmenufolder.ico"
+
 IDI_MENULINK            ICON                    "..\\Resources\\tsvnmenulink.ico"
+
 IDI_MENUMULTIPLE        ICON                    "..\\Resources\\tsvnmenumultiple.ico"
+
 IDI_APPSMALL            ICON                    "..\\Resources\\TortoiseSmall.ico"
+
 IDI_CLIPPASTE           ICON                    "..\\Resources\\clippaste.ico"
+
 IDI_PUSH                ICON                    "..\\resources\\Push.ico"
+
 IDI_CLONE               ICON                    "..\\resources\\menucheckout.ico"
+
 IDI_TAG                 ICON                    "..\\resources\\Tag.ico"
+
 IDI_REBASE              ICON                    "..\\resources\\menurebase.ico"
+
 IDI_COMBINE             ICON                    "..\\resources\\menucombine.ico"
+
 IDI_SKIP                ICON                    "..\\resources\\menuskip.ico"
+
 IDI_SQUASH              ICON                    "..\\resources\\menusquash.ico"
+
 IDI_EDIT                ICON                    "..\\resources\\menuedit.ico"
+
 IDI_PICK                ICON                    "..\\resources\\menupick.ico"
+
 IDI_MENUSYNC            ICON                    "..\\resources\\menusync.ico"
+
 IDI_COPYCLIP            ICON                    "..\\Resources\\copy.ico"
+
 IDI_THUMB_DOWN          ICON                    "..\\Resources\\thumb_down.ico"
+
 IDI_THUMB_UP            ICON                    "..\\Resources\\thumb_up.ico"
+
 IDI_REVISIONGRAPH       ICON                    "..\\Resources\\menurevisiongraph.ico"
+
 IDI_DAEMON              ICON                    "..\\Resources\\menudaemon.ico"
+
 IDI_MERGEABORT          ICON                    "..\\Resources\\menumergeabort.ico"
+
 IDI_BISECT              ICON                    "..\\Resources\\menubisect.ico"
+
 IDI_BISECT_RESET        ICON                    "..\\Resources\\menubisectreset.ico"
+
 IDI_SHELVE              ICON                    "..\\Resources\\menushelve.ico"
+
 IDI_UNSHELVE            ICON                    "..\\Resources\\menuunshelve.ico"
+
 IDI_SHOWBRANCHES        ICON                    "..\\Resources\\showbranches.ico"
+
 IDI_LFS                 ICON                    "..\\Resources\\menulfs.ico"
+
 IDI_LFSLOCK             ICON                    "..\\Resources\\menulock.ico"
+
 IDI_LFSUNLOCK           ICON                    "..\\Resources\\menuunlock.ico"
+
 #endif    // Neutral resources
 /////////////////////////////////////////////////////////////////////////////
 
 
 /////////////////////////////////////////////////////////////////////////////
-// Englisch (USA) resources
+// English (United States) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
@@ -104,6 +161,9 @@ LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
 IDI_MENUSENDMAIL        ICON                    "..\\resources\\menusendmail.ico"
+
+IDI_VISUALSTUDIO        ICON                    "D:\\projects\\DST_Git\\src\\Resources\\vs2022.ico"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -223,10 +283,14 @@ BEGIN
     IDS_MENUCOMMITSUBMODULE "&Commit submodule..."
     IDS_MENUWORKTREE        "Worktrees"
     IDS_MENUDESCWORKTREE    "Manages the worktrees of a repository"
-    IDS_MENUDSTWORKTREEADD     "Add DownStreamTech worktree"
+    IDS_MENUDSTWORKTREEADD  "Add DownStreamTech worktree"
     IDS_MENUDESCDSTWORKTREEADD "Adds a DownStreamTech worktree"
-    IDS_MENUDSTWORKTREEREMOVE  "Remove DownStreamTech worktree"
+    IDS_MENUDSTWORKTREEREMOVE "Remove DownStreamTech worktree"
     IDS_MENUDESCDSTWORKTREEREMOVE "Removes a DownStreamTech worktree"
+    IDS_MENUDSTOPENCAM350   "Open CAM350 Solution"
+    IDS_MENUDESCDSTOPENCAM350 "Opens the CAM350 solution"
+    IDS_MENUDSTOPENBLUEPRINT "Open BluePrint Solution"
+    IDS_MENUDESCDSTOPENBLUEPRINT "Opens the BluePrint solution"
     IDS_MENUREVISIONGRAPH   "Revision &graph"
 END
 
@@ -275,6 +339,8 @@ BEGIN
     IDS_MENUDESCREVISIONGRAPH 
                             "Shows a graphical representation of copies/tags/branches"
     IDS_LOADING             "Loading..."
+    IDS_MENULFS             "LFS"
+    IDS_MENUDESCLFS         "Large file storage"
 END
 
 STRINGTABLE
@@ -339,18 +405,28 @@ BEGIN
     IDS_MENUBISECTRESET     "Bisect reset"
     IDS_MENUBISECTSKIP      "Bisect skip"
     IDS_MENUDESCBISECTSKIP  "Skip current revision in bisecting process"
+    IDS_MENULFSLOCK         "Lock"
+    IDS_MENULFSUNLOCK       "Unlock"
 END
 
 STRINGTABLE
 BEGIN
-    IDS_MENULFS              "LFS"
-    IDS_MENUDESCLFS          "Large file storage"
-    IDS_MENULFSLOCKS         "Show locked files"
-    IDS_MENUDESCLFSLOCKS     "Shows a list of all files locked using LFS"
-    IDS_MENULFSLOCK          "Lock"
-    IDS_MENUDESCLFSLOCK      "Locks a file using LFS"
-    IDS_MENULFSUNLOCK        "Unlock"
-    IDS_MENUDESCLFSUNLOCK    "Unlocks a file using LFS"
+    IDS_MENUDIFF            "&Diff"
+    IDS_MENUDESCDIFF        "Compares the file with the last committed revision to show you the changes you made"
+    IDS_DROPCOPYADDMENU     "Git Copy and add files to this WC"
+    IDS_DROPMOVEMENU        "Git Move versioned item(s) here"
+    IDS_MENULOG             "Show &log"
+    IDS_MENUDESCLOG         "Shows the log for the selected file/folder"
+    IDS_MENUDESCLFSLOCK     "Locks a file using LFS"
+    IDS_MENUDESCLFSUNLOCK   "Unlocks a file using LFS"
+    IDS_MENULFSLOCKS        "Show locked files"
+    IDS_MENUDESCLFSLOCKS    "Shows a list of all files locked using LFS"
+    IDS_MENUCONFLICT        "&Edit conflicts"
+    IDS_MENUDESCCONFLICT    "Launches the external diff/merge program to solve the conflicts"
+    IDS_MENUDESCBISECTSTART "Start bisect mode..."
+    IDS_MENUDESCBISECTGOOD  "Marks revision as good"
+    IDS_MENUHELP            "&Help"
+    IDS_MENUDESCHELP        "Read the 'Daily Use Guide' before you are stuck..."
 END
 
 STRINGTABLE
@@ -387,22 +463,6 @@ BEGIN
     IDS_MENUDIFFNOW         "Diff with ""%s"""
     IDS_MENUUNIGNORE        "Remove from &ignore list"
     IDS_MENUDESCUNIGNORE    "Removes the file or filemask from the list of ignored items"
-END
-
-STRINGTABLE
-BEGIN
-    IDS_MENUDIFF            "&Diff"
-    IDS_MENUDESCDIFF        "Compares the file with the last committed revision to show you the changes you made"
-    IDS_DROPCOPYADDMENU     "Git Copy and add files to this WC"
-    IDS_DROPMOVEMENU        "Git Move versioned item(s) here"
-    IDS_MENULOG             "Show &log"
-    IDS_MENUDESCLOG         "Shows the log for the selected file/folder"
-    IDS_MENUCONFLICT        "&Edit conflicts"
-    IDS_MENUDESCCONFLICT    "Launches the external diff/merge program to solve the conflicts"
-    IDS_MENUDESCBISECTSTART "Start bisect mode..."
-    IDS_MENUDESCBISECTGOOD  "Marks revision as good"
-    IDS_MENUHELP            "&Help"
-    IDS_MENUDESCHELP        "Read the 'Daily Use Guide' before you are stuck..."
 END
 
 STRINGTABLE
@@ -451,7 +511,7 @@ BEGIN
                             "Delete and ignore multiple items by &extension"
 END
 
-#endif    // Englisch (USA) resources
+#endif    // English (United States) resources
 /////////////////////////////////////////////////////////////////////////////
 
 

@@ -19,3 +19,18 @@ public:
 	 */
 	bool Execute() override;
 };
+
+class DstOpenSolutionCommand : public Command
+{
+	std::string m_name;
+
+public:
+	DstOpenSolutionCommand(std::string name)
+		: m_name(name)
+	{
+	}
+	/**
+	 * Executes the command.
+	 */
+	bool Execute() override;
+};

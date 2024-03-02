@@ -112,6 +112,8 @@ enum GitCommands
 		ShellMenuDstWorktreeAdd,
 		ShellMenuDstWorktreeRemove,
 		ShellMenuDropNewWorktree,
+		ShellMenuDstOpenCAM350Solution,
+		ShellMenuDstOpenBluePrintSolution,
 		ShellMenuLastEntry			// used to mark the menu array end
 };
 

@@ -670,6 +670,8 @@
     <ClInclude Include="VersioncheckParser.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\..\..\vs2022.ico" />
+    <Image Include="..\..\..\vs2022.png" />
     <Image Include="..\Resources\actionadded.ico" />
     <Image Include="..\Resources\actionconflicted.ico" />
     <Image Include="..\Resources\actiondeleted.ico" />
@@ -780,6 +782,7 @@
     <Image Include="..\Resources\tsvnmenulink.ico" />
     <Image Include="..\Resources\tsvnmenumultiple.ico" />
     <Image Include="..\Resources\warning-general.ico" />
+    <Image Include="..\tortoiseudiff\icon1.ico" />
     <Image Include="..\TortoiseUDiff\TortoiseUDiff.ico" />
     <Image Include="..\Resources\library-win10.ico" />
     <Image Include="gitfolder.ico" />

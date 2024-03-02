@@ -168,6 +168,8 @@ enum TGitCommand
 
 	cmdDstWorktreeAdd,
 	cmdDstWorktreeRemove,
+	cmdDstOpenCam350Solution,
+	cmdDstOpenBluePrintSolution,
 };
 
 static const struct CommandInfo
@@ -249,6 +251,8 @@ static const struct CommandInfo
 	{	cmdDropWorktreeCreate,	L"dropnewworktree"	},
 	{	cmdDstWorktreeAdd,	L"dstworktreeadd"	},
 	{	cmdDstWorktreeRemove,	L"dstworktreeremove"	},
+	{	cmdDstOpenCam350Solution,	L"dstopencam350solution"	},
+	{	cmdDstOpenBluePrintSolution, L"dstopenblueprintsolution"	},
 };
 
 
@@ -275,6 +279,10 @@ Command * CommandServer::GetCommand(const CString& sCmd)
 		return new DstWorktreeCommand;
 	case cmdDstWorktreeRemove:
 		return new DstWorktreeCommand(true);
+	case cmdDstOpenCam350Solution:
+		return new DstOpenSolutionCommand("CAM350/cam350.sln");
+	case cmdDstOpenBluePrintSolution:
+		return new DstOpenSolutionCommand("BluePrint/BluePrint.sln");
 	case cmdAbout:
 		return new AboutCommand;
 	case cmdAutoTextTest:

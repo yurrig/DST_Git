@@ -1653,6 +1653,12 @@ void CShellExt::InvokeCommand(int cmd, const std::wstring& appDir, const std::ws
 	case ShellMenuDstWorktreeRemove:
 		AddPathCommand(gitCmd, L"dstworktreeremove", false, paths, folder);
 		break;
+	case ShellMenuDstOpenCAM350Solution:
+		AddPathCommand(gitCmd, L"dstopencam350solution", false, paths, folder);
+		break;
+	case ShellMenuDstOpenBluePrintSolution:
+		AddPathCommand(gitCmd, L"dstopenblueprintsolution", false, paths, folder);
+		break;
 	case ShellMenuDropNewWorktree:
 		AddPathFileDropCommand(gitCmd, L"dropnewworktree", paths, folder);
 		break;

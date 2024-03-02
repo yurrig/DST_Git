@@ -481,3 +481,11 @@ bool DstWorktreeCommand::Execute()
 
 	return false;
 }
+
+bool DstOpenSolutionCommand::Execute()
+{
+	auto path = fs::current_path();
+	auto solution = path / m_name;
+	ShellExecute(NULL, L"open", solution.c_str(), nullptr, path.c_str(), SW_SHOW);
+	return true;
+}
