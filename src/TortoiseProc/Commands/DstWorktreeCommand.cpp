@@ -321,7 +321,7 @@ bool DstWorktreeCommand::Execute()
 	if (parser.HasKey(L"branch"))
 		desc.name = CUnicodeUtils::GetUTF8(parser.GetVal(L"branch"));
 
-	if (desc.name.IsEmpty())
+	if (!m_bRemove && desc.name.IsEmpty())
 		desc = dst::BranchDescFromClipboard();
 
 	auto current_path = fs::current_path();

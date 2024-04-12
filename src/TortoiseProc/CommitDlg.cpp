@@ -370,7 +370,7 @@ BOOL CCommitDlg::OnInitDialog()
 		}
 	}
 
-	if (!m_sLogMessage.IsEmpty())
+	if (m_cLogMessage && !m_sLogMessage.IsEmpty())
 	{
 		m_cLogMessage.SetText(m_sLogMessage);
 		m_cLogMessage.Call(SCI_SETCURRENTPOS, 0);
@@ -576,7 +576,10 @@ BOOL CCommitDlg::OnInitDialog()
 	{
 		DialogEnableWindow(IDC_CHECK_NEWBRANCH, FALSE);
 		m_bCreateNewBranch = FALSE;
-		GetDlgItem(IDC_MERGEACTIVE)->ShowWindow(SW_SHOW);
+		if (auto pMergeActive = GetDlgItem(IDC_MERGEACTIVE))
+		{
+			pMergeActive->ShowWindow(SW_SHOW);
+		}
 		CMessageBox::ShowCheck(GetSafeHwnd(), IDS_COMMIT_MERGE_HINT, IDS_APPNAME, MB_ICONINFORMATION, L"CommitMergeHint", IDS_MSGBOX_DONOTSHOWAGAIN);
 	}
 
