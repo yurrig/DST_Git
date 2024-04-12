@@ -732,6 +732,7 @@ int CTGitPath::GetAdminDirMask() const
 	{
 		dotGitPath.Empty();
 		GitAdminDir::GetWorktreeAdminDirPath(m_sProjectRoot, dotGitPath);
+		status |= ITEMIS_WORKTREE;
 	}
 
 	if (PathFileExists(dotGitPath + L"BISECT_START"))
