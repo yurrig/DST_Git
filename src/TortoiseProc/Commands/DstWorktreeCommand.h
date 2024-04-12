@@ -22,11 +22,11 @@ public:
 
 class DstOpenSolutionCommand : public Command
 {
-	std::string m_name;
+	std::string m_name, m_dir;
 
 public:
-	DstOpenSolutionCommand(std::string name)
-		: m_name(name)
+	DstOpenSolutionCommand(std::string name, std::string dir)
+		: m_name(name), m_dir(dir)
 	{
 	}
 	/**

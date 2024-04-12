@@ -280,9 +280,9 @@ Command * CommandServer::GetCommand(const CString& sCmd)
 	case cmdDstWorktreeRemove:
 		return new DstWorktreeCommand(true);
 	case cmdDstOpenCam350Solution:
-		return new DstOpenSolutionCommand("CAM350/cam350.sln");
+		return new DstOpenSolutionCommand("cam350.sln", "CAM350");
 	case cmdDstOpenBluePrintSolution:
-		return new DstOpenSolutionCommand("BluePrint/BluePrint.sln");
+		return new DstOpenSolutionCommand("BluePrint.sln", "BluePrint");
 	case cmdAbout:
 		return new AboutCommand;
 	case cmdAutoTextTest:

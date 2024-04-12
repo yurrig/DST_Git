@@ -35,6 +35,9 @@
 using json = nlohmann::json;
 #endif
 
+#include <filesystem>
+namespace fs = std::filesystem;
+
 extern CGit g_Git;
 
 CTGitPath::CTGitPath()
@@ -674,6 +677,23 @@ bool CTGitPath::HasSubmodules() const
 	return false;
 }
 
+static bool CheckSolution(LPCTSTR pszPath, LPCTSTR pszSolution, LPCTSTR pszDir)
+{
+	fs::path path(pszPath);
+	fs::path solution(pszSolution);
+
+	fs::path subpath = path / solution;
+	if (fs::exists(subpath))
+		return true;
+
+	fs::path dir(pszDir);
+	subpath = path / dir / solution;
+	if (fs::exists(subpath))
+		return true;
+
+	return false;
+}
+
 int CTGitPath::GetAdminDirMask() const
 {
 	int status = 0;
@@ -693,6 +713,10 @@ int CTGitPath::GetAdminDirMask() const
 			if (IsRegisteredSubmoduleOfParentProject())
 				status |= ITEMIS_SUBMODULE;
 		}
+		if (CheckSolution(GetWinPath(), _T("cam350.sln"), _T("CAM350")))
+			status |= ITEMIS_HASCAM350;
+		if (CheckSolution(GetWinPath(), _T("BluePrint.sln"), _T("BluePrint")))
+			status |= ITEMIS_HASBP;
 	}
 
 	CString dotGitPath;

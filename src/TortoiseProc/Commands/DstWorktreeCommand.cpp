@@ -305,6 +305,21 @@ std::string GetCredentials()
 	return token;
 }
 
+static fs::path CheckSolution(const fs::path& solution, const fs::path& dir)
+{
+	fs::path path = fs::current_path();
+
+	fs::path subpath = path / solution;
+	if (fs::exists(subpath))
+		return subpath;
+
+	subpath = path / dir / solution;
+	if (fs::exists(subpath))
+		return subpath;
+
+	return {};
+}
+
 } // namespace dst
 
 bool DstWorktreeCommand::Execute()
@@ -484,8 +499,7 @@ bool DstWorktreeCommand::Execute()
 
 bool DstOpenSolutionCommand::Execute()
 {
-	auto path = fs::current_path();
-	auto solution = path / m_name;
-	ShellExecute(NULL, L"open", solution.c_str(), nullptr, path.c_str(), SW_SHOW);
+	auto solution = dst::CheckSolution(m_name, m_dir);
+	ShellExecute(NULL, L"open", solution.c_str(), nullptr, solution.parent_path().c_str(), SW_SHOW);
 	return true;
 }
