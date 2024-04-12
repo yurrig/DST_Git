@@ -201,10 +201,10 @@ BranchDesc BranchDescFromUrl(const std::string& url, const std::string& Pat)
 			product = "blueprint";
 		if (!product.empty())
 		{
-			CString branch_name = L"bugfix/" + to_cstring(product) + L"/" + to_cstring(id) + L" " + to_cstring(title);
+			CString branch_name = to_cstring(id) + L" " + to_cstring(title);
 			return {
 				BranchDesc::Defect,
-				remove_bad_chars(branch_name),
+				L"bugfix/" + to_cstring(product) + L"/" + remove_bad_chars(branch_name),
 				remove_bad_chars(to_cstring(title)),
 				to_cstring(id),
 				to_cstring(product)
