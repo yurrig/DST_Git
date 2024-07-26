@@ -162,7 +162,7 @@ LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 // remains consistent on all systems.
 IDI_MENUSENDMAIL        ICON                    "..\\resources\\menusendmail.ico"
 
-IDI_VISUALSTUDIO        ICON                    "D:\\projects\\DST_Git\\src\\Resources\\vs2022.ico"
+IDI_VISUALSTUDIO        ICON                    "..\\resources\\vs2022.ico"
 
 
 /////////////////////////////////////////////////////////////////////////////
