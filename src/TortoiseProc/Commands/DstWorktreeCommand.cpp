@@ -275,7 +275,7 @@ CString WorkTreeDirName(const BranchDesc& branch_desc)
 	auto branch_name = branch_desc.main_repo_path;
 	if (branch_desc.type == BranchDesc::PR)
 		branch_name += L"-PR_" + CString(branch_desc.id) + L"_" + branch_desc.title;
-	else if (branch_desc.type == BranchDesc::Defect)
+	else// if (branch_desc.type == BranchDesc::Defect)
 		branch_name += L"-" + branch_desc.name;
 	CString dir_name = branch_name.Left(max_dirname_len - 2);
 
