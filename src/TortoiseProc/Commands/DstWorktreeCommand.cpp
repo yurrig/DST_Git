@@ -80,6 +80,10 @@ std::string InvokeRestMethod(const std::string& aurl, std::string pat)
 						DWORD dwLength = sizeof(dwStatusCode);
 						HttpQueryInfo(hRequest, HTTP_QUERY_STATUS_CODE | HTTP_QUERY_FLAG_NUMBER, &dwStatusCode, &dwLength, nullptr);
 
+						if (dwStatusCode == 401 || dwStatusCode == 203)
+						{
+							::MessageBox(nullptr, L"Logon failure, please check your credentials", L"TortoiseGit", MB_OK | MB_ICONERROR);
+						}
 						if (dwStatusCode == 200)
 						{
 							for (DWORD dwSize = 1, dwDownloaded = 0; dwSize > 0;)
@@ -122,7 +126,7 @@ std::string ReadAccessToken()
 		// You can access the access token using pCredential->CredentialBlob and pCredential->CredentialBlobSize
 		return {
 			(LPCSTR)pCredential->CredentialBlob,
-			pCredential->CredentialBlobSize / sizeof(wchar_t)
+			pCredential->CredentialBlobSize
 		};
 	}
 	else
@@ -327,7 +331,7 @@ bool DstWorktreeCommand::Execute()
 	auto token = dst::ReadAccessToken();
 	if (token.empty())
 	{
-		token = dst::GetCredentials().c_str();
+		token = dst::GetCredentials();
 		if (token.empty())
 			return false;
 	}
